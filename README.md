@@ -55,3 +55,17 @@
 ├── scripts/            # 정합성 테스트 및 평가 스크립트
 ├── src/                # FastAPI 백엔드 및 서비스 소스 코드
 └── README.md
+```
+
+## 📄 Commit Message Convention
+커밋 메시지 컨벤션은 아래를 따릅니다.
+한글로도 작성 가능합니다.
+```text
+feat: 기능 추가
+fix: 오류 수정
+docs: 문서 작성 및 수정
+research: 모델/기술 조사
+experiment: 모델 실행 및 실험
+test: 테스트 추가 및 수행
+chore: 환경설정, 파일정리, 의존성 관리
+```
