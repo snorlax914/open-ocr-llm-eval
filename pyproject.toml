@@ -5,4 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "paddlepaddle==3.2.1",
+    "paddleocr[doc-parser]",
 ]
+
+[[tool.uv.index]]
+name = "paddle-cpu"
+url = "https://www.paddlepaddle.org.cn/packages/stable/cpu/"
+explicit = true
+
+[tool.uv.sources]
+paddlepaddle = { index = "paddle-cpu" }
