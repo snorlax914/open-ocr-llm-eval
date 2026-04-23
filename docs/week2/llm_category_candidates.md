@@ -33,7 +33,7 @@ OCR 결과 텍스트를 입력받아 문서 카테고리를 추천하는 Instruc
 OCR을 통해 추출된 텍스트를 입력으로 받아 문서 카테고리를 분류하는 모델이다.  
 카테고리 분류는 단답 출력의 단순 태스크이므로 **속도 > 정확도 > 출력 형식 준수** 순으로 우선순위를 두고 선정했다.
 
-#### 1) Qwen3-8B Non-thinking (Alibaba) — Qwen2.5 후속 세대 성능 비교용
+#### 1) Qwen3-8B Non-thinking (Alibaba)
 
 | 모델 | 파라미터 | 출시 | 컨텍스트 | 라이선스 |
 |---|---|---|---|---|
@@ -57,13 +57,37 @@ OCR을 통해 추출된 텍스트를 입력으로 받아 문서 카테고리를 
 
 ---
 
-#### 2) Qwen2.5-7B-Instruct (Alibaba) — 과제 지정 모델
+#### 2) EXAONE 3.5 7.8B Instruct (LG AI Research)
+
+| 모델 | 파라미터 | 출시 | 컨텍스트 | 라이선스 |
+|---|---|---|---|---|
+| EXAONE-3.5-7.8B-Instruct | 7.8B (비임베딩 6.98B) | 2024년 12월 | 32K | EXAONE AI Model License 1.1 - NC |
+
+- LG AI Research에서 개발한 **한국어·영어 이중언어 특화** 모델
+- 한국어 벤치마크: **KoMT-Bench 7.96**, **LogicKor 9.08**로 동급 최고 수준
+- 범용 벤치마크: Arena Hard 68.7, IFEval 78.9, MT-Bench 8.29
+- 한국 행정 서식(사업자등록증, 인감증명서 등)에 대한 문맥 파악 능력이 Qwen 대비 우수할 것으로 기대
+- Ollama에서 `ollama run exaone3.5`로 즉시 실행 가능 (4.8GB, Q4 기본)
+- **NC 라이선스**로 연구/비상용 목적 무료, 상용 적용 시 LG AI Research 별도 협의 필요
+
+> **버전 선택 근거**: EXAONE 시리즈는 3.5(2.4B/7.8B/32B)와 4.0(1.2B/32B)이 있다.
+> EXAONE 4.0은 7-8B급 모델이 없어 선택 불가.
+> EXAONE 3.5 2.4B는 파라미터 부족, 32B는 RTX 3080 구동 불가.
+> 7.8B는 INT4 양자화 시 ~5GB VRAM으로 RTX 3080에서 여유 있게 구동되며,
+> 한국어 문서 분류에 가장 적합한 크기·성능 조합.
+
+**Ollama 실행**: `ollama run exaone3.5` (Q4 기본 제공, 4.8GB)  
+**Colab 실행**: T4 환경 기준 FP16/INT4 모두 가능
+
+---
+
+#### 3) Qwen2.5-7B-Instruct (Alibaba)
 
 | 모델 | 파라미터 | 출시 | 컨텍스트 | 라이선스 |
 |---|---|---|---|---|
 | Qwen2.5-7B-Instruct | 7B | 2024년 9월 | 128K | Apache 2.0 |
 
-- 2주차 과제에서 **기존 검토 모델**로 명시된 후보
+- Qwen3-8B의 직전 세대 모델로, 세대 간 성능·속도 차이를 직접 비교하기 위한 기준점
 - 코딩·수학 벤치마크 동급 최상위 (MATH 75.5, HumanEval 84.8)
 - **29개 이상 언어** 지원, 한국어 포함 다국어 처리 가능
 - Ollama에서 가장 안정적인 커뮤니티 지원 및 검증 사례 보유
@@ -80,46 +104,21 @@ OCR을 통해 추출된 텍스트를 입력으로 받아 문서 카테고리를 
 
 ---
 
-#### 3) Llama-3.1-8B-Instruct (Meta) — 동급 최고 속도, 비-Qwen 비교군
-
-| 모델 | 파라미터 | 출시 | 컨텍스트 | 라이선스 |
-|---|---|---|---|---|
-| Llama-3.1-8B-Instruct | 8B | 2024년 7월 | 128K | Llama 3.1 Community |
-
-- Self-hosted LLM 리더보드 기준 **170 tokens/sec** 으로 동급 최고 속도
-- 벤치마크: MMLU-Pro 48.3, IFEval 80.4, HumanEval 72.6
-- 세계지식(world knowledge)이 Qwen2.5-7B 대비 우수하여 범용 안정성이 높음
-- Qwen 계열 외 벤더 다양성을 확보하기 위한 비교군
-- 한국어는 공식 지원 8개 언어(영/독/불/이/포/힌/스/태)에 **미포함**. 다만 학습 데이터에 한국어가 일부 포함되어 기본적인 처리는 가능하며, 커뮤니티 한국어 파인튜닝 모델(Bllossom 등)이 존재. Qwen 대비 한국어 문서 분류 정확도 차이 확인 필요
-
-> **버전 선택 근거**: Llama 3.1 Instruct 모델은 8B, 70B, 405B로 제공된다.
-> Llama 3.2는 텍스트 전용 모델이 1B/3B만 존재하고 8B급이 없으며, Llama 3.3은 70B만 제공되어 8B급은 3.1이 최신.
-> 70B 이상은 RTX 3080 구동 불가. 8B는 FP16 ~16GB, INT4 ~5GB로 RTX 3080에서 구동 가능.
-> 속도 벤치마크에서 170 tok/s를 기록해 응답 속도 5초 이내 요구사항에 가장 유리한 후보.
-
-**Ollama 실행**: `ollama run llama3.1:8b`  
-**Colab 실행**: T4 환경 기준 FP16/INT4 모두 가능
-
----
-
-#### 4) Ministral-8B-Instruct-2410 (Mistral AI) — 과제 지정 모델
+#### 4) Ministral-8B-Instruct-2410 (Mistral AI)
 
 | 모델 | 파라미터 | 출시 | 컨텍스트 | 라이선스 |
 |---|---|---|---|---|
 | Ministral-8B-Instruct-2410 | 8B | 2024년 10월 | 128K | Mistral Research License |
 
-- 2주차 과제에서 **기존 검토 모델**로 명시된 후보 (Ministral3:8b)
-- Mistral 계열의 8B급 Instruct 모델로 다양한 태스크에서 범용적 성능
-- Mistral Research License로 연구용 무료, 상용 적용 시 별도 라이선스 필요
+- 과제에서 도입 검토 모델로 명시된 후보 (Ministral3:8b)
 - Interleaved Sliding-Window Attention(128K/32K 교차) 아키텍처로 긴 문맥 효율적 처리
-- Arena Hard 70.9로 Llama 3.1 8B(62.4) 대비 우위, HumanEval 76.8로 코드 태스크도 강점
-- 다만 HuggingFace 커뮤니티 토론에서 Qwen2.5-7B 대비 전반적 벤치마크 열세가 보고됨
-- 1주차에서 Ministral 3 3B를 이미 후보로 선정했으므로, Mistral 계열 8B급 성능을 확인하는 의미
+- Arena Hard 70.9, HumanEval 76.8, MT-Bench 8.3
+- Mistral Research License로 연구용 무료, 상용 적용 시 별도 라이선스 필요
+- HuggingFace 커뮤니티 토론에서 Qwen2.5-7B 대비 전반적 벤치마크 열세가 보고되었으나, 카테고리 분류 태스크에서의 실제 성능은 직접 테스트로 확인 필요
 
-> **버전 선택 근거**: 과제에서 직접 명시된 모델이므로 필수 포함.
-> HuggingFace 토론(discussions/5)에서 "Looks like not as good as Qwen2.5 7B"라는 평가가 있으나,
-> 카테고리 분류라는 특정 태스크에서의 실제 성능은 직접 테스트로 확인해야 함.
-> 범용 벤치마크와 도메인 특화 태스크의 성능이 반드시 일치하지는 않기 때문.
+> **버전 선택 근거**: 과제에서 도입 검토 모델로 명시.
+> HuggingFace 토론(discussions/5)에서 범용 벤치마크 열세가 보고되었으나,
+> 카테고리 분류라는 특정 태스크에서의 성능은 범용 벤치마크와 반드시 일치하지 않으므로 직접 비교 가치가 있음.
 
 **Ollama 실행**: `ollama run ministral:8b`  
 **Colab 실행**: T4 환경 기준 INT4 양자화로 실험 가능
@@ -128,15 +127,14 @@ OCR을 통해 추출된 텍스트를 입력으로 받아 문서 카테고리를 
 
 ### 2.2. 최종 후보 비교 요약
 
-| 기준 | Qwen3-8B (Non-thinking) | Qwen2.5-7B-Instruct | Llama-3.1-8B-Instruct | Ministral-8B-Instruct |
+| 기준 | Qwen3-8B (Non-thinking) | EXAONE 3.5 7.8B | Qwen2.5-7B-Instruct | Ministral-8B-Instruct |
 |---|---|---|---|---|
-| 생성 속도 (Q4, RTX 3080급) | ~115 tok/s | ~90 tok/s (추정) | ~80 tok/s | 미측정 |
-| MMLU-Pro | 미공개 (Qwen2.5-14B급) | 벤치마크 참조 | 48.3 | — |
-| IFEval | 미공개 | 벤치마크 참조 | 80.4 | — |
-| Arena Hard | — | — | 62.4 | 70.9 |
-| 한국어 공식 지원 | ✅ 100개+ 언어 | ✅ 29개+ 언어 | ❌ 8개 언어 (한국어 미포함) | ⚠️ 10개 언어 |
-| 라이선스 | Apache 2.0 | Apache 2.0 | Llama Community | Mistral Research |
-| 선정 사유 | Qwen2.5 후속 세대 비교 | 과제 지정 모델 | 동급 최고 속도 | 과제 지정 모델 |
+| 생성 속도 (Q4, RTX 3080급) | ~115 tok/s | 미측정 (동급 추정) | ~90 tok/s (추정) | 미측정 |
+| IFEval | 미공개 | 78.9 | 벤치마크 참조 | — |
+| Arena Hard | — | 68.7 | — | 70.9 |
+| 한국어 벤치마크 | — | KoMT 7.96 / LogicKor 9.08 | — | — |
+| 한국어 공식 지원 | ✅ 100개+ 언어 | ✅ 한영 이중언어 특화 | ✅ 29개+ 언어 | ⚠️ 10개 언어 |
+| 라이선스 | Apache 2.0 | ⚠️ NC (비상용) | Apache 2.0 | Mistral Research |
 
 > 생성 속도는 RTX 3080 Ti Q4_K 4K 컨텍스트 기준 외부 벤치마크 참고치이며, 실험에서 동일 조건으로 실측 예정  
 > 출처: [LocalScore.ai](https://www.localscore.ai), [Hardware-Corner](https://www.hardware-corner.net/gpu-llm-benchmarks/rtx-3080-ti/)
@@ -147,16 +145,16 @@ OCR을 통해 추출된 텍스트를 입력으로 받아 문서 카테고리를 
 
 ### 카테고리 분류 LLM (4개)
 
-| 모델 | 선정 사유 | 속도 (Q4, 추정) |
-|---|---|---|
-| **Qwen3-8B (Non-thinking)** | Qwen2.5 후속 세대, 성능 향상 확인용 | ~115 tok/s |
-| **Qwen2.5-7B-Instruct** | 과제 지정 모델, Qwen3와 세대 간 비교 기준점 | ~90 tok/s |
-| **Llama-3.1-8B-Instruct** | 동급 최고 속도, Qwen 외 벤더 비교군 | ~80 tok/s |
-| **Ministral-8B-Instruct-2410** | 과제 지정 모델, Mistral 계열 8B급 검증 | 미측정 |
+| 모델 | 속도 (Q4, 추정) |
+|---|---|
+| **Qwen3-8B (Non-thinking)** | ~115 tok/s |
+| **EXAONE 3.5 7.8B** | 미측정 (동급 추정) |
+| **Qwen2.5-7B-Instruct** | ~90 tok/s |
+| **Ministral-8B-Instruct-2410** | 미측정 |
 
 ```
 OCR 추출 텍스트 → Instruct LLM → 카테고리명 단답 출력
-대상: Qwen3-8B, Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct, Ministral-8B-Instruct
+대상: Qwen3-8B, EXAONE-3.5-7.8B, Qwen2.5-7B-Instruct, Ministral-8B-Instruct
 ```
 
 본 실험의 최종 출력 형식은 **카테고리명 단답**으로 설정한다.  
@@ -171,7 +169,7 @@ OCR 추출 텍스트 → Instruct LLM → 카테고리명 단답 출력
 |---|---|---|---|
 | RTX 3080 (로컬/Ollama) | 12GB | INT4 (기본) | 4종 모두 구동 가능 |
 | Colab 무료 (T4) | 16GB | INT4/INT8 | 4종 모두 구동 가능 |
-| Colab 무료 (T4) | 16GB | FP16 | Qwen2.5-7B, Llama-3.1-8B (여유 있음) / Qwen3-8B, Ministral-8B (OOM 위험) |
+| Colab 무료 (T4) | 16GB | FP16 | Qwen2.5-7B (여유 있음) / Qwen3-8B, EXAONE-3.5-7.8B, Ministral-8B (OOM 위험) |
 
 > Ollama 기본 양자화(Q4_K_M 등)로 4종 모두 RTX 3080에서 구동 가능  
 > 속도 비교는 동일 양자화 조건(INT4)에서 수행하여 공정성 확보
@@ -201,10 +199,13 @@ OCR 추출 텍스트 → Instruct LLM → 카테고리명 단답 출력
 | Gemma-2-9B-it | FP16 ~18GB로 RTX 3080 OOM, Colab T4에서도 빡빡 |
 | Phi-4-mini-instruct (3.8B) | 한국어 성능 미검증, 사실 지식 부족으로 문서 유형 판별에 불리 |
 | SmolLM3-3B | 유럽어 중심 학습, 한국어 지원 약함 — 한국어 문서 분류 부적합 |
-| Mistral-7B-Instruct-v0.3 | Ministral-8B이 후속 모델이므로 구세대 중복 |
+| Llama-3.1-8B-Instruct | 한국어 공식 미지원 (8개 언어만 지원), 한국어 문서 분류 정확도 저하 우려 |
+| Mistral-7B-Instruct-v0.3 | Ministral-8B의 이전 세대, 구세대 중복 |
 | Mistral-Small-24B-Instruct | 24B급으로 RTX 3080 구동 불가 |
 | DeepSeek-R1-Distill-Qwen-7B | Reasoning 특화 모델, Instruct(Non-thinking) 요구사항에 부적합 |
 | EXAONE 4.0-1.2B | 1주차에서 한국어 기준점으로 이미 선정, 카테고리 분류 전용 비교군으로는 파라미터 부족 |
+| HyperCLOVA X SEED 8B | 텍스트 전용 Instruct 8B 모델 없음 (Omni-8B은 멀티모달, Text-Instruct는 0.5B/1.5B만 존재) |
+| Mistral NeMo 12B | 12B급으로 RTX 3080 FP16 OOM, INT4에서도 8B 대비 속도 열세 |
 
 ---
 
@@ -229,6 +230,10 @@ OCR 추출 텍스트 → Instruct LLM → 카테고리명 단답 출력
 | Qwen3 공식 블로그 | https://qwenlm.github.io/blog/qwen3/ |
 | Qwen3-8B Ollama | https://ollama.com/library/qwen3:8b |
 | Qwen2.5 공식 블로그 | https://qwenlm.github.io/blog/qwen2.5/ |
+| EXAONE-3.5-7.8B-Instruct 모델 카드 | https://huggingface.co/LGAI-EXAONE/EXAONE-3.5-7.8B-Instruct |
+| EXAONE 3.5 Ollama | https://ollama.com/library/exaone3.5 |
+| EXAONE 3.5 기술 보고서 | https://arxiv.org/abs/2412.04862 |
+| Ministral-8B-Instruct 모델 카드 | https://huggingface.co/mistralai/Ministral-8B-Instruct-2410 |
 | Ministral-8B vs Qwen2.5 비교 토론 | https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/discussions/5 |
 | Self-Hosted LLM Leaderboard 2026 | https://onyx.app/self-hosted-llm-leaderboard |
 | Best Open-Source SLMs 2026 | https://www.bentoml.com/blog/the-best-open-source-small-language-models |
