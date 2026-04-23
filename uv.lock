@@ -2,16 +2,11 @@ version = 1
 revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'darwin'",
-    "python_full_version < '3.14' and sys_platform == 'darwin'",
-    "python_full_version >= '3.14' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version < '3.14' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "(python_full_version >= '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')",
-    "python_full_version < '3.14' and sys_platform == 'win32'",
-    "python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "(python_full_version < '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')",
+    "python_full_version >= '3.14' and platform_machine == 'AMD64' and sys_platform == 'win32'",
+    "python_full_version < '3.14' and platform_machine == 'AMD64' and sys_platform == 'win32'",
+]
+supported-markers = [
+    "platform_machine == 'AMD64' and sys_platform == 'win32'",
 ]
 conflicts = [[
     { package = "open-ocr-llm-eval", extra = "cpu" },
@@ -19,16 +14,34 @@ conflicts = [[
 ]]
 
 [[package]]
+name = "accelerate"
+version = "1.13.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "psutil", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyyaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "safetensors", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "torch", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ca/14/787e5498cd062640f0f3d92ef4ae4063174f76f9afd29d13fc52a319daae/accelerate-1.13.0.tar.gz", hash = "sha256:d631b4e0f5b3de4aff2d7e9e6857d164810dfc3237d54d017f075122d057b236", size = 402835, upload-time = "2026-03-04T19:34:12.359Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7e/46/02ac5e262d4af18054b3e922b2baedbb2a03289ee792162de60a865defc5/accelerate-1.13.0-py3-none-any.whl", hash = "sha256:cf1a3efb96c18f7b152eb0fa7490f3710b19c3f395699358f08decca2b8b62e0", size = 383744, upload-time = "2026-03-04T19:34:10.313Z" },
+]
+
+[[package]]
 name = "aistudio-sdk"
 version = "0.3.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "bce-python-sdk" },
-    { name = "click" },
-    { name = "prettytable" },
-    { name = "psutil" },
-    { name = "requests" },
-    { name = "tqdm" },
+    { name = "bce-python-sdk", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "click", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "prettytable", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "psutil", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tqdm", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/77/cd71a481bb7a76b0e9d0b6bf47711c627b1dd079001ea246893f19a9d04c/aistudio_sdk-0.3.8-py3-none-any.whl", hash = "sha256:bfc96af7243ac2ee3303014849aa4028717cce5afa622af8cfe3a1d44d1941d6", size = 62972, upload-time = "2025-09-19T11:42:39.384Z" },
@@ -57,8 +70,8 @@ name = "anyio"
 version = "4.13.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "idna" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "idna", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(python_full_version < '3.13' and platform_machine == 'AMD64' and sys_platform == 'win32') or (python_full_version >= '3.13' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/19/14/2c5dd9f512b66549ae92767a9c7b330ae88e1932ca57876909410251fe13/anyio-4.13.0.tar.gz", hash = "sha256:334b70e641fd2221c1505b3890c69882fe4a2df910cba14d97019b90b24439dc", size = 231622, upload-time = "2026-03-24T12:59:09.671Z" }
 wheels = [
@@ -70,10 +83,10 @@ name = "bce-python-sdk"
 version = "0.9.70"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "crc32c" },
-    { name = "future" },
-    { name = "pycryptodome" },
-    { name = "six" },
+    { name = "crc32c", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "future", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pycryptodome", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "six", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f7/a9/7c21a9073eb9ad7e8cacf6f8a0e47c0d01ad7bf8fd8e0dc42164b117d60b/bce_python_sdk-0.9.70.tar.gz", hash = "sha256:3b37fd7448278dd33f745a6a23198a2cc2490fded9cb8d59b72500784853df4e", size = 299967, upload-time = "2026-04-14T12:02:42.034Z" }
 wheels = [
@@ -85,12 +98,28 @@ name = "beautifulsoup4"
 version = "4.14.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "soupsieve" },
-    { name = "typing-extensions" },
+    { name = "soupsieve", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c3/b0/1c6a16426d389813b48d95e26898aff79abbde42ad353958ad95cc8c9b21/beautifulsoup4-4.14.3.tar.gz", hash = "sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86", size = 627737, upload-time = "2025-11-30T15:08:26.084Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1a/39/47f9197bdd44df24d67ac8893641e16f386c984a0619ef2ee4c51fbbc019/beautifulsoup4-4.14.3-py3-none-any.whl", hash = "sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb", size = 107721, upload-time = "2025-11-30T15:08:24.087Z" },
+]
+
+[[package]]
+name = "bitsandbytes"
+version = "0.49.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "torch", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d8/7d/f1fe0992334b18cd8494f89aeec1dcc674635584fcd9f115784fea3a1d05/bitsandbytes-0.49.2-py3-none-macosx_14_0_arm64.whl", hash = "sha256:87be5975edeac5396d699ecbc39dfc47cf2c026daaf2d5852a94368611a6823f", size = 131940, upload-time = "2026-02-16T21:26:04.572Z" },
+    { url = "https://files.pythonhosted.org/packages/29/71/acff7af06c818664aa87ff73e17a52c7788ad746b72aea09d3cb8e424348/bitsandbytes-0.49.2-py3-none-manylinux_2_24_aarch64.whl", hash = "sha256:2fc0830c5f7169be36e60e11f2be067c8f812dfcb829801a8703735842450750", size = 31442815, upload-time = "2026-02-16T21:26:06.783Z" },
+    { url = "https://files.pythonhosted.org/packages/19/57/3443d6f183436fbdaf5000aac332c4d5ddb056665d459244a5608e98ae92/bitsandbytes-0.49.2-py3-none-manylinux_2_24_x86_64.whl", hash = "sha256:54b771f06e1a3c73af5c7f16ccf0fc23a846052813d4b008d10cb6e017dd1c8c", size = 60651714, upload-time = "2026-02-16T21:26:11.579Z" },
+    { url = "https://files.pythonhosted.org/packages/b6/d4/501655842ad6771fb077f576d78cbedb5445d15b1c3c91343ed58ca46f0e/bitsandbytes-0.49.2-py3-none-win_amd64.whl", hash = "sha256:2e0ddd09cd778155388023cbe81f00afbb7c000c214caef3ce83386e7144df7d", size = 55372289, upload-time = "2026-02-16T21:26:16.267Z" },
 ]
 
 [[package]]
@@ -220,7 +249,7 @@ name = "click"
 version = "8.3.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "colorama", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/bb/63/f9e1ea081ce35720d8b92acde70daaedace594dc93b693c869e0d5910718/click-8.3.3.tar.gz", hash = "sha256:398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2", size = 328061, upload-time = "2026-04-22T15:11:27.506Z" }
 wheels = [
@@ -241,7 +270,7 @@ name = "colorlog"
 version = "6.10.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "colorama", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a2/61/f083b5ac52e505dfc1c624eafbf8c7589a0d7f32daa398d2e7590efa5fda/colorlog-6.10.1.tar.gz", hash = "sha256:eb4ae5cb65fe7fec7773c2306061a8e63e02efc2c72eba9d27b0fa23c94f1321", size = 17162, upload-time = "2025-10-16T16:14:11.978Z" }
 wheels = [
@@ -315,8 +344,8 @@ name = "cssutils"
 version = "2.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "encutils" },
-    { name = "more-itertools" },
+    { name = "encutils", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "more-itertools", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/40/73/4ced8c775cd5f64876f0d5b9dfae354dc96e50273c3d904f070965a27ec9/cssutils-2.14.0.tar.gz", hash = "sha256:c33256f0cbc215ad405b647117ace63c9e22af96fe42dcb7861742a591e6464c", size = 714703, upload-time = "2026-04-19T23:51:18.609Z" }
 wheels = [
@@ -346,7 +375,7 @@ name = "encutils"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "chardet" },
+    { name = "chardet", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/86/24/15d0f368875e53fb02bf7475e8a8c9aec36dee5a3dcb23efc77f585f9eb6/encutils-1.0.0.tar.gz", hash = "sha256:38eca5af18cebabd8be43c17f14c9d3fbba83cc5f7ac8e3ab1c86e24c4b2b91a", size = 22831, upload-time = "2026-04-19T16:27:19.925Z" }
 wheels = [
@@ -385,7 +414,7 @@ name = "ftfy"
 version = "6.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "wcwidth" },
+    { name = "wcwidth", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a5/d3/8650919bc3c7c6e90ee3fa7fd618bf373cbbe55dff043bd67353dbb20cd8/ftfy-6.3.1.tar.gz", hash = "sha256:9b3c3d90f84fb267fe64d375a07b7f8912d817cf86009ae134aa03e1819506ec", size = 308927, upload-time = "2024-10-26T00:50:35.149Z" }
 wheels = [
@@ -447,8 +476,8 @@ name = "httpcore"
 version = "1.0.9"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "certifi" },
-    { name = "h11" },
+    { name = "certifi", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "h11", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/06/94/82699a10bca87a5556c9c59b5963f2d039dbd239f25bc2a63907a05a14cb/httpcore-1.0.9.tar.gz", hash = "sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8", size = 85484, upload-time = "2025-04-24T22:06:22.219Z" }
 wheels = [
@@ -460,10 +489,10 @@ name = "httpx"
 version = "0.28.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "anyio" },
-    { name = "certifi" },
-    { name = "httpcore" },
-    { name = "idna" },
+    { name = "anyio", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "certifi", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "httpcore", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "idna", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz", hash = "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc", size = 141406, upload-time = "2024-12-06T15:37:23.222Z" }
 wheels = [
@@ -475,15 +504,15 @@ name = "huggingface-hub"
 version = "1.11.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock" },
-    { name = "fsspec" },
-    { name = "hf-xet", marker = "platform_machine == 'AMD64' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
-    { name = "httpx" },
-    { name = "packaging" },
-    { name = "pyyaml" },
-    { name = "tqdm" },
-    { name = "typer" },
-    { name = "typing-extensions" },
+    { name = "filelock", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "fsspec", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "hf-xet", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "httpx", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyyaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tqdm", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typer", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/dc/89/e7aa12d8a6b9259bed10671abb25ae6fa437c0f88a86ecbf59617bae7759/huggingface_hub-1.11.0.tar.gz", hash = "sha256:15fb3713c7f9cdff7b808a94fd91664f661ab142796bb48c9cd9493e8d166278", size = 761749, upload-time = "2026-04-16T13:07:39.73Z" }
 wheels = [
@@ -513,7 +542,7 @@ name = "jinja2"
 version = "3.1.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "markupsafe" },
+    { name = "markupsafe", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/df/bf/f7da0350254c0ed7c72f3e33cef02e048281fec7ecec5f032d4aac52226b/jinja2-3.1.6.tar.gz", hash = "sha256:0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d", size = 245115, upload-time = "2025-03-05T20:05:02.478Z" }
 wheels = [
@@ -695,7 +724,7 @@ name = "markdown-it-py"
 version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "mdurl" },
+    { name = "mdurl", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/5b/f5/4ec618ed16cc4f8fb3b701563655a69816155e79e24a17b651541804721d/markdown_it_py-4.0.0.tar.gz", hash = "sha256:cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3", size = 73070, upload-time = "2025-08-11T12:57:52.854Z" }
 wheels = [
@@ -779,12 +808,12 @@ name = "modelscope"
 version = "1.36.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock" },
-    { name = "packaging" },
-    { name = "requests" },
-    { name = "setuptools" },
-    { name = "tqdm" },
-    { name = "urllib3" },
+    { name = "filelock", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "setuptools", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tqdm", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "urllib3", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a0/06/60c648bc11195e1421a27e401673e6170eca9765be71da53f72a4274eed3/modelscope-1.36.1.tar.gz", hash = "sha256:7c175a7056259663ab1901ebe4d8338de415a40b25ea7bb556f7be40ece63d60", size = 4578481, upload-time = "2026-04-21T08:18:53.589Z" }
 wheels = [
@@ -798,6 +827,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a2/f7/139d22fef48ac78127d18e01d80cf1be40236ae489769d17f35c3d425293/more_itertools-11.0.2.tar.gz", hash = "sha256:392a9e1e362cbc106a2457d37cabf9b36e5e12efd4ebff1654630e76597df804", size = 144659, upload-time = "2026-04-09T15:01:33.297Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/98/6af411189d9413534c3eb691182bff1f5c6d44ed2f93f2edfe52a1bbceb8/more_itertools-11.0.2-py3-none-any.whl", hash = "sha256:6e35b35f818b01f691643c6c611bc0902f2e92b46c18fffa77ae1e7c46e912e4", size = 71939, upload-time = "2026-04-09T15:01:32.21Z" },
+]
+
+[[package]]
+name = "mpmath"
+version = "1.3.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz", hash = "sha256:7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f", size = 508106, upload-time = "2023-03-07T16:47:11.061Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c", size = 536198, upload-time = "2023-03-07T16:47:09.197Z" },
 ]
 
 [[package]]
@@ -873,181 +911,16 @@ wheels = [
 ]
 
 [[package]]
-name = "nvidia-cublas-cu12"
-version = "12.6.4.1"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/af/eb/ff4b8c503fa1f1796679dce648854d58751982426e4e4b37d6fce49d259c/nvidia_cublas_cu12-12.6.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:08ed2686e9875d01b58e3cb379c6896df8e76c75e0d4a7f7dace3d7b6d9ef8eb", size = 393138322, upload-time = "2024-11-20T17:40:25.65Z" },
-    { url = "https://files.pythonhosted.org/packages/97/0d/f1f0cadbf69d5b9ef2e4f744c9466cb0a850741d08350736dfdb4aa89569/nvidia_cublas_cu12-12.6.4.1-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:235f728d6e2a409eddf1df58d5b0921cf80cfa9e72b9f2775ccb7b4a87984668", size = 390794615, upload-time = "2024-11-20T17:39:52.715Z" },
-    { url = "https://files.pythonhosted.org/packages/84/f7/985e9bdbe3e0ac9298fcc8cfa51a392862a46a0ffaccbbd56939b62a9c83/nvidia_cublas_cu12-12.6.4.1-py3-none-win_amd64.whl", hash = "sha256:9e4fa264f4d8a4eb0cdbd34beadc029f453b3bafae02401e999cf3d5a5af75f8", size = 434535301, upload-time = "2024-11-20T17:50:41.681Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-cccl-cu12"
-version = "12.6.77"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/6d/beb88aab55e7661413b25593fa1150f9043c3612d3dbae2612b04a639d33/nvidia_cuda_cccl_cu12-12.6.77-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:0d1349cce618a701640006374e06ecfbb19196103f2927275668f0ec1e5787d8", size = 2879092, upload-time = "2024-11-20T17:34:47.934Z" },
-    { url = "https://files.pythonhosted.org/packages/ec/f3/d1aeed60469d50f272f4a1af87ecfb84da32ed5c4b61e50d4cd0ca7e4949/nvidia_cuda_cccl_cu12-12.6.77-py3-none-manylinux2014_aarch64.whl", hash = "sha256:7fb3d534bcf23208335162f295abaf0a92b4924705d043d4687750b8e7f43459", size = 2879083, upload-time = "2024-10-01T16:56:50.008Z" },
-    { url = "https://files.pythonhosted.org/packages/ed/81/5db553af81b7df0ae048302c2b68a970720f49d12abdac1b26a892316744/nvidia_cuda_cccl_cu12-12.6.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:ea80be91ccd49b0785fd744afd470cd0c0175bcf25d4fe65b7d548095b68687a", size = 2879094, upload-time = "2024-11-20T17:34:58.748Z" },
-    { url = "https://files.pythonhosted.org/packages/91/e6/3a13a96f2064dbf2e07f9ae6378dca4701b4464a833e20a1542dddceb59e/nvidia_cuda_cccl_cu12-12.6.77-py3-none-manylinux2014_x86_64.whl", hash = "sha256:86ef75453d27b4f36af14d296cd9ac7f3013338ba8625cb9fd2cbba25253d9c8", size = 2879083, upload-time = "2024-10-01T16:57:11.124Z" },
-    { url = "https://files.pythonhosted.org/packages/7a/f3/c7409f4be9a5ff3b50212e2784e4f33c052aa34ade91d15cfc7da7dd0ed6/nvidia_cuda_cccl_cu12-12.6.77-py3-none-win_amd64.whl", hash = "sha256:9c944d3b47e5b5602e6e972ef3a5eeae61c4549fd12adbc5d731a0868b4d058e", size = 2879023, upload-time = "2024-10-01T17:09:13.994Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-cupti-cu12"
-version = "12.6.80"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/e6/8b/2f6230cb715646c3a9425636e513227ce5c93c4d65823a734f4bb86d43c3/nvidia_cuda_cupti_cu12-12.6.80-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:166ee35a3ff1587f2490364f90eeeb8da06cd867bd5b701bf7f9a02b78bc63fc", size = 8236764, upload-time = "2024-11-20T17:35:41.03Z" },
-    { url = "https://files.pythonhosted.org/packages/25/0f/acb326ac8fd26e13c799e0b4f3b2751543e1834f04d62e729485872198d4/nvidia_cuda_cupti_cu12-12.6.80-py3-none-manylinux2014_aarch64.whl", hash = "sha256:358b4a1d35370353d52e12f0a7d1769fc01ff74a191689d3870b2123156184c4", size = 8236756, upload-time = "2024-10-01T16:57:45.507Z" },
-    { url = "https://files.pythonhosted.org/packages/49/60/7b6497946d74bcf1de852a21824d63baad12cd417db4195fc1bfe59db953/nvidia_cuda_cupti_cu12-12.6.80-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:6768bad6cab4f19e8292125e5f1ac8aa7d1718704012a0e3272a6f61c4bce132", size = 8917980, upload-time = "2024-11-20T17:36:04.019Z" },
-    { url = "https://files.pythonhosted.org/packages/a5/24/120ee57b218d9952c379d1e026c4479c9ece9997a4fb46303611ee48f038/nvidia_cuda_cupti_cu12-12.6.80-py3-none-manylinux2014_x86_64.whl", hash = "sha256:a3eff6cdfcc6a4c35db968a06fcadb061cbc7d6dde548609a941ff8701b98b73", size = 8917972, upload-time = "2024-10-01T16:58:06.036Z" },
-    { url = "https://files.pythonhosted.org/packages/1c/81/7796f096afaf726796b1b648f3bc80cafc61fe7f77f44a483c89e6c5ef34/nvidia_cuda_cupti_cu12-12.6.80-py3-none-win_amd64.whl", hash = "sha256:bbe6ae76e83ce5251b56e8c8e61a964f757175682bbad058b170b136266ab00a", size = 5724175, upload-time = "2024-10-01T17:09:47.955Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-nvrtc-cu12"
-version = "12.6.77"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/f4/2f/72df534873235983cc0a5371c3661bebef7c4682760c275590b972c7b0f9/nvidia_cuda_nvrtc_cu12-12.6.77-py3-none-manylinux2014_aarch64.whl", hash = "sha256:5847f1d6e5b757f1d2b3991a01082a44aad6f10ab3c5c0213fa3e25bddc25a13", size = 23162955, upload-time = "2024-10-01T16:59:50.922Z" },
-    { url = "https://files.pythonhosted.org/packages/75/2e/46030320b5a80661e88039f59060d1790298b4718944a65a7f2aeda3d9e9/nvidia_cuda_nvrtc_cu12-12.6.77-py3-none-manylinux2014_x86_64.whl", hash = "sha256:35b0cc6ee3a9636d5409133e79273ce1f3fd087abb0532d2d2e8fff1fe9efc53", size = 23650380, upload-time = "2024-10-01T17:00:14.643Z" },
-    { url = "https://files.pythonhosted.org/packages/f5/46/d3a1cdda8bb113c80f43a0a6f3a853356d487b830f3483f92d49ce87fa55/nvidia_cuda_nvrtc_cu12-12.6.77-py3-none-win_amd64.whl", hash = "sha256:f7007dbd914c56bd80ea31bc43e8e149da38f68158f423ba845fc3292684e45a", size = 39026742, upload-time = "2024-10-01T17:10:49.058Z" },
-]
-
-[[package]]
-name = "nvidia-cuda-runtime-cu12"
-version = "12.6.77"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/8f/ea/590b2ac00d772a8abd1c387a92b46486d2679ca6622fd25c18ff76265663/nvidia_cuda_runtime_cu12-12.6.77-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:6116fad3e049e04791c0256a9778c16237837c08b27ed8c8401e2e45de8d60cd", size = 908052, upload-time = "2024-11-20T17:35:19.905Z" },
-    { url = "https://files.pythonhosted.org/packages/b7/3d/159023799677126e20c8fd580cca09eeb28d5c5a624adc7f793b9aa8bbfa/nvidia_cuda_runtime_cu12-12.6.77-py3-none-manylinux2014_aarch64.whl", hash = "sha256:d461264ecb429c84c8879a7153499ddc7b19b5f8d84c204307491989a365588e", size = 908040, upload-time = "2024-10-01T16:57:22.221Z" },
-    { url = "https://files.pythonhosted.org/packages/e1/23/e717c5ac26d26cf39a27fbc076240fad2e3b817e5889d671b67f4f9f49c5/nvidia_cuda_runtime_cu12-12.6.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:ba3b56a4f896141e25e19ab287cd71e52a6a0f4b29d0d31609f60e3b4d5219b7", size = 897690, upload-time = "2024-11-20T17:35:30.697Z" },
-    { url = "https://files.pythonhosted.org/packages/f0/62/65c05e161eeddbafeca24dc461f47de550d9fa8a7e04eb213e32b55cfd99/nvidia_cuda_runtime_cu12-12.6.77-py3-none-manylinux2014_x86_64.whl", hash = "sha256:a84d15d5e1da416dd4774cb42edf5e954a3e60cc945698dc1d5be02321c44dc8", size = 897678, upload-time = "2024-10-01T16:57:33.821Z" },
-    { url = "https://files.pythonhosted.org/packages/fa/76/4c80fa138333cc975743fd0687a745fccb30d167f906f13c1c7f9a85e5ea/nvidia_cuda_runtime_cu12-12.6.77-py3-none-win_amd64.whl", hash = "sha256:86c58044c824bf3c173c49a2dbc7a6c8b53cb4e4dca50068be0bf64e9dab3f7f", size = 891773, upload-time = "2024-10-01T17:09:26.362Z" },
-]
-
-[[package]]
-name = "nvidia-cudnn-cu12"
-version = "9.5.1.17"
+name = "ollama"
+version = "0.6.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
+    { name = "httpx", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pydantic", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
+sdist = { url = "https://files.pythonhosted.org/packages/9d/5a/652dac4b7affc2b37b95386f8ae78f22808af09d720689e3d7a86b6ed98e/ollama-0.6.1.tar.gz", hash = "sha256:478c67546836430034b415ed64fa890fd3d1ff91781a9d548b3325274e69d7c6", size = 51620, upload-time = "2025-11-13T23:02:17.416Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/99/93/a201a12d3ec1caa8c6ac34c1c2f9eeb696b886f0c36ff23c638b46603bd0/nvidia_cudnn_cu12-9.5.1.17-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:9fd4584468533c61873e5fda8ca41bac3a38bcb2d12350830c69b0a96a7e4def", size = 570523509, upload-time = "2024-10-25T19:53:03.148Z" },
-    { url = "https://files.pythonhosted.org/packages/2a/78/4535c9c7f859a64781e43c969a3a7e84c54634e319a996d43ef32ce46f83/nvidia_cudnn_cu12-9.5.1.17-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:30ac3869f6db17d170e0e556dd6cc5eee02647abc31ca856634d5a40f82c15b2", size = 570988386, upload-time = "2024-10-25T19:54:26.39Z" },
-    { url = "https://files.pythonhosted.org/packages/b6/b2/3f60d15f037fa5419d9d7f788b100ef33ea913ae5315c87ca6d6fa606c35/nvidia_cudnn_cu12-9.5.1.17-py3-none-win_amd64.whl", hash = "sha256:d7af0f8a4f3b4b9dbb3122f2ef553b45694ed9c384d5a75bab197b8eefb79ab8", size = 565440743, upload-time = "2024-10-25T19:55:49.74Z" },
-]
-
-[[package]]
-name = "nvidia-cufft-cu12"
-version = "11.3.0.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/1f/37/c50d2b2f2c07e146776389e3080f4faf70bcc4fa6e19d65bb54ca174ebc3/nvidia_cufft_cu12-11.3.0.4-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:d16079550df460376455cba121db6564089176d9bac9e4f360493ca4741b22a6", size = 200164144, upload-time = "2024-11-20T17:40:58.288Z" },
-    { url = "https://files.pythonhosted.org/packages/ce/f5/188566814b7339e893f8d210d3a5332352b1409815908dad6a363dcceac1/nvidia_cufft_cu12-11.3.0.4-py3-none-manylinux2014_aarch64.whl", hash = "sha256:8510990de9f96c803a051822618d42bf6cb8f069ff3f48d93a8486efdacb48fb", size = 200164135, upload-time = "2024-10-01T17:03:24.212Z" },
-    { url = "https://files.pythonhosted.org/packages/8f/16/73727675941ab8e6ffd86ca3a4b7b47065edcca7a997920b831f8147c99d/nvidia_cufft_cu12-11.3.0.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:ccba62eb9cef5559abd5e0d54ceed2d9934030f51163df018532142a8ec533e5", size = 200221632, upload-time = "2024-11-20T17:41:32.357Z" },
-    { url = "https://files.pythonhosted.org/packages/60/de/99ec247a07ea40c969d904fc14f3a356b3e2a704121675b75c366b694ee1/nvidia_cufft_cu12-11.3.0.4-py3-none-manylinux2014_x86_64.whl", hash = "sha256:768160ac89f6f7b459bee747e8d175dbf53619cfe74b2a5636264163138013ca", size = 200221622, upload-time = "2024-10-01T17:03:58.79Z" },
-    { url = "https://files.pythonhosted.org/packages/b4/38/36fd800cec8f6e89b7c1576edaaf8076e69ec631644cdbc1b5f2e2b5a9df/nvidia_cufft_cu12-11.3.0.4-py3-none-win_amd64.whl", hash = "sha256:6048ebddfb90d09d2707efb1fd78d4e3a77cb3ae4dc60e19aab6be0ece2ae464", size = 199356881, upload-time = "2024-10-01T17:13:01.861Z" },
-]
-
-[[package]]
-name = "nvidia-cufile-cu12"
-version = "1.11.1.6"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/66/cc9876340ac68ae71b15c743ddb13f8b30d5244af344ec8322b449e35426/nvidia_cufile_cu12-1.11.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:cc23469d1c7e52ce6c1d55253273d32c565dd22068647f3aa59b3c6b005bf159", size = 1142103, upload-time = "2024-11-20T17:42:11.83Z" },
-    { url = "https://files.pythonhosted.org/packages/17/bf/cc834147263b929229ce4aadd62869f0b195e98569d4c28b23edc72b85d9/nvidia_cufile_cu12-1.11.1.6-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:8f57a0051dcf2543f6dc2b98a98cb2719c37d3cee1baba8965d57f3bbc90d4db", size = 1066155, upload-time = "2024-11-20T17:41:49.376Z" },
-]
-
-[[package]]
-name = "nvidia-curand-cu12"
-version = "10.3.7.77"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/42/ac/36543605358a355632f1a6faa3e2d5dfb91eab1e4bc7d552040e0383c335/nvidia_curand_cu12-10.3.7.77-py3-none-manylinux2014_aarch64.whl", hash = "sha256:6e82df077060ea28e37f48a3ec442a8f47690c7499bff392a5938614b56c98d8", size = 56289881, upload-time = "2024-10-01T17:04:18.981Z" },
-    { url = "https://files.pythonhosted.org/packages/73/1b/44a01c4e70933637c93e6e1a8063d1e998b50213a6b65ac5a9169c47e98e/nvidia_curand_cu12-10.3.7.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:a42cd1344297f70b9e39a1e4f467a4e1c10f1da54ff7a85c12197f6c652c8bdf", size = 56279010, upload-time = "2024-11-20T17:42:50.958Z" },
-    { url = "https://files.pythonhosted.org/packages/4a/aa/2c7ff0b5ee02eaef890c0ce7d4f74bc30901871c5e45dee1ae6d0083cd80/nvidia_curand_cu12-10.3.7.77-py3-none-manylinux2014_x86_64.whl", hash = "sha256:99f1a32f1ac2bd134897fc7a203f779303261268a65762a623bf30cc9fe79117", size = 56279000, upload-time = "2024-10-01T17:04:45.274Z" },
-    { url = "https://files.pythonhosted.org/packages/a6/02/5362a9396f23f7de1dd8a64369e87c85ffff8216fc8194ace0fa45ba27a5/nvidia_curand_cu12-10.3.7.77-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:7b2ed8e95595c3591d984ea3603dd66fe6ce6812b886d59049988a712ed06b6e", size = 56289882, upload-time = "2024-11-20T17:42:25.222Z" },
-    { url = "https://files.pythonhosted.org/packages/a9/a8/0cd0cec757bd4b4b4ef150fca62ec064db7d08a291dced835a0be7d2c147/nvidia_curand_cu12-10.3.7.77-py3-none-win_amd64.whl", hash = "sha256:6d6d935ffba0f3d439b7cd968192ff068fafd9018dbf1b85b37261b13cfc9905", size = 55783873, upload-time = "2024-10-01T17:13:30.377Z" },
-]
-
-[[package]]
-name = "nvidia-cusolver-cu12"
-version = "11.7.1.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
-    { name = "nvidia-cusparse-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/93/17/dbe1aa865e4fdc7b6d4d0dd308fdd5aaab60f939abfc0ea1954eac4fb113/nvidia_cusolver_cu12-11.7.1.2-py3-none-manylinux2014_aarch64.whl", hash = "sha256:0ce237ef60acde1efc457335a2ddadfd7610b892d94efee7b776c64bb1cac9e0", size = 157833628, upload-time = "2024-10-01T17:05:05.591Z" },
-    { url = "https://files.pythonhosted.org/packages/f0/6e/c2cf12c9ff8b872e92b4a5740701e51ff17689c4d726fca91875b07f655d/nvidia_cusolver_cu12-11.7.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:e9e49843a7707e42022babb9bcfa33c29857a93b88020c4e4434656a655b698c", size = 158229790, upload-time = "2024-11-20T17:43:43.211Z" },
-    { url = "https://files.pythonhosted.org/packages/9f/81/baba53585da791d043c10084cf9553e074548408e04ae884cfe9193bd484/nvidia_cusolver_cu12-11.7.1.2-py3-none-manylinux2014_x86_64.whl", hash = "sha256:6cf28f17f64107a0c4d7802be5ff5537b2130bfc112f25d5a30df227058ca0e6", size = 158229780, upload-time = "2024-10-01T17:05:39.875Z" },
-    { url = "https://files.pythonhosted.org/packages/7c/5f/07d0ba3b7f19be5a5ec32a8679fc9384cfd9fc6c869825e93be9f28d6690/nvidia_cusolver_cu12-11.7.1.2-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:dbbe4fc38ec1289c7e5230e16248365e375c3673c9c8bac5796e2e20db07f56e", size = 157833630, upload-time = "2024-11-20T17:43:16.77Z" },
-    { url = "https://files.pythonhosted.org/packages/d4/53/fff50a0808df7113d77e3bbc7c2b7eaed6f57d5eb80fbe93ead2aea1e09a/nvidia_cusolver_cu12-11.7.1.2-py3-none-win_amd64.whl", hash = "sha256:6813f9d8073f555444a8705f3ab0296d3e1cb37a16d694c5fc8b862a0d8706d7", size = 149287877, upload-time = "2024-10-01T17:13:49.804Z" },
-]
-
-[[package]]
-name = "nvidia-cusparse-cu12"
-version = "12.5.4.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/eb/eb/6681efd0aa7df96b4f8067b3ce7246833dd36830bb4cec8896182773db7d/nvidia_cusparse_cu12-12.5.4.2-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:d25b62fb18751758fe3c93a4a08eff08effedfe4edf1c6bb5afd0890fe88f887", size = 216451147, upload-time = "2024-11-20T17:44:18.055Z" },
-    { url = "https://files.pythonhosted.org/packages/d3/56/3af21e43014eb40134dea004e8d0f1ef19d9596a39e4d497d5a7de01669f/nvidia_cusparse_cu12-12.5.4.2-py3-none-manylinux2014_aarch64.whl", hash = "sha256:7aa32fa5470cf754f72d1116c7cbc300b4e638d3ae5304cfa4a638a5b87161b1", size = 216451135, upload-time = "2024-10-01T17:06:03.826Z" },
-    { url = "https://files.pythonhosted.org/packages/06/1e/b8b7c2f4099a37b96af5c9bb158632ea9e5d9d27d7391d7eb8fc45236674/nvidia_cusparse_cu12-12.5.4.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:7556d9eca156e18184b94947ade0fba5bb47d69cec46bf8660fd2c71a4b48b73", size = 216561367, upload-time = "2024-11-20T17:44:54.824Z" },
-    { url = "https://files.pythonhosted.org/packages/43/ac/64c4316ba163e8217a99680c7605f779accffc6a4bcd0c778c12948d3707/nvidia_cusparse_cu12-12.5.4.2-py3-none-manylinux2014_x86_64.whl", hash = "sha256:23749a6571191a215cb74d1cdbff4a86e7b19f1200c071b3fcf844a5bea23a2f", size = 216561357, upload-time = "2024-10-01T17:06:29.861Z" },
-    { url = "https://files.pythonhosted.org/packages/45/ef/876ad8e4260e1128e6d4aac803d9d51baf3791ebdb4a9b8d9b8db032b4b0/nvidia_cusparse_cu12-12.5.4.2-py3-none-win_amd64.whl", hash = "sha256:4acb8c08855a26d737398cba8fb6f8f5045d93f82612b4cfd84645a2332ccf20", size = 213712630, upload-time = "2024-10-01T17:14:23.779Z" },
-]
-
-[[package]]
-name = "nvidia-cusparselt-cu12"
-version = "0.6.3"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/62/da/4de092c61c6dea1fc9c936e69308a02531d122e12f1f649825934ad651b5/nvidia_cusparselt_cu12-0.6.3-py3-none-manylinux2014_aarch64.whl", hash = "sha256:8371549623ba601a06322af2133c4a44350575f5a3108fb75f3ef20b822ad5f1", size = 156402859, upload-time = "2024-10-16T02:23:17.184Z" },
-    { url = "https://files.pythonhosted.org/packages/3b/9a/72ef35b399b0e183bc2e8f6f558036922d453c4d8237dab26c666a04244b/nvidia_cusparselt_cu12-0.6.3-py3-none-manylinux2014_x86_64.whl", hash = "sha256:e5c8a26c36445dd2e6812f1177978a24e2d37cacce7e090f297a688d1ec44f46", size = 156785796, upload-time = "2024-10-15T21:29:17.709Z" },
-    { url = "https://files.pythonhosted.org/packages/46/3e/9e1e394a02a06f694be2c97bbe47288bb7c90ea84c7e9cf88f7b28afe165/nvidia_cusparselt_cu12-0.6.3-py3-none-win_amd64.whl", hash = "sha256:3b325bcbd9b754ba43df5a311488fca11a6b5dc3d11df4d190c000cf1a0765c7", size = 155595972, upload-time = "2024-10-15T22:58:35.426Z" },
-]
-
-[[package]]
-name = "nvidia-nccl-cu12"
-version = "2.25.1"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/4b/28/f62adab24f2d4b2165b22145af56a7598ab535feb6ccd172f76b9106ebaa/nvidia_nccl_cu12-2.25.1-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:4ab428bc915785cc66e8c57cb34c7a64cf739c46702b8db748b6ad6cc7180cf8", size = 201581984, upload-time = "2025-01-24T01:21:47.792Z" },
-    { url = "https://files.pythonhosted.org/packages/11/0c/8c78b7603f4e685624a3ea944940f1e75f36d71bd6504330511f4a0e1557/nvidia_nccl_cu12-2.25.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:362aed5963fb9ea2ed2f264409baae30143498fd0e5c503aeaa1badd88cdc54a", size = 201352353, upload-time = "2025-01-24T01:21:27.263Z" },
-]
-
-[[package]]
-name = "nvidia-nvjitlink-cu12"
-version = "12.6.85"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9d/d7/c5383e47c7e9bf1c99d5bd2a8c935af2b6d705ad831a7ec5c97db4d82f4f/nvidia_nvjitlink_cu12-12.6.85-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl", hash = "sha256:eedc36df9e88b682efe4309aa16b5b4e78c2407eac59e8c10a6a47535164369a", size = 19744971, upload-time = "2024-11-20T17:46:53.366Z" },
-    { url = "https://files.pythonhosted.org/packages/31/db/dc71113d441f208cdfe7ae10d4983884e13f464a6252450693365e166dcf/nvidia_nvjitlink_cu12-12.6.85-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:cf4eaa7d4b6b543ffd69d6abfb11efdeb2db48270d94dfd3a452c24150829e41", size = 19270338, upload-time = "2024-11-20T17:46:29.758Z" },
-    { url = "https://files.pythonhosted.org/packages/89/76/93c1467b1387387440a4d25102d86b7794535449b689f8e2dc22c1c8ff7f/nvidia_nvjitlink_cu12-12.6.85-py3-none-win_amd64.whl", hash = "sha256:e61120e52ed675747825cdd16febc6a0730537451d867ee58bee3853b1b13d1c", size = 161908572, upload-time = "2024-11-20T17:52:40.124Z" },
-]
-
-[[package]]
-name = "nvidia-nvtx-cu12"
-version = "12.6.77"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b9/93/80f8a520375af9d7ee44571a6544653a176e53c2b8ccce85b97b83c2491b/nvidia_nvtx_cu12-12.6.77-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:f44f8d86bb7d5629988d61c8d3ae61dddb2015dee142740536bc7481b022fe4b", size = 90549, upload-time = "2024-11-20T17:38:17.387Z" },
-    { url = "https://files.pythonhosted.org/packages/2b/53/36e2fd6c7068997169b49ffc8c12d5af5e5ff209df6e1a2c4d373b3a638f/nvidia_nvtx_cu12-12.6.77-py3-none-manylinux2014_aarch64.whl", hash = "sha256:adcaabb9d436c9761fca2b13959a2d237c5f9fd406c8e4b723c695409ff88059", size = 90539, upload-time = "2024-10-01T17:00:27.179Z" },
-    { url = "https://files.pythonhosted.org/packages/56/9a/fff8376f8e3d084cd1530e1ef7b879bb7d6d265620c95c1b322725c694f4/nvidia_nvtx_cu12-12.6.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:b90bed3df379fa79afbd21be8e04a0314336b8ae16768b58f2d34cb1d04cd7d2", size = 89276, upload-time = "2024-11-20T17:38:27.621Z" },
-    { url = "https://files.pythonhosted.org/packages/9e/4e/0d0c945463719429b7bd21dece907ad0bde437a2ff12b9b12fee94722ab0/nvidia_nvtx_cu12-12.6.77-py3-none-manylinux2014_x86_64.whl", hash = "sha256:6574241a3ec5fdc9334353ab8c479fe75841dbe8f4532a8fc97ce63503330ba1", size = 89265, upload-time = "2024-10-01T17:00:38.172Z" },
-    { url = "https://files.pythonhosted.org/packages/f7/cd/98a447919d4ed14d407ac82b14b0a0c9c1dbfe81099934b1fc3bfd1e6316/nvidia_nvtx_cu12-12.6.77-py3-none-win_amd64.whl", hash = "sha256:2fb11a4af04a5e6c84073e6404d26588a34afd35379f0855a99797897efa75c0", size = 56434, upload-time = "2024-10-01T17:11:13.124Z" },
+    { url = "https://files.pythonhosted.org/packages/47/4f/4a617ee93d8208d2bcf26b2d8b9402ceaed03e3853c754940e2290fed063/ollama-0.6.1-py3-none-any.whl", hash = "sha256:fc4c984b345735c5486faeee67d8a265214a31cbb828167782dc642ce0a2bf8c", size = 14354, upload-time = "2025-11-13T23:02:16.292Z" },
 ]
 
 [[package]]
@@ -1055,24 +928,34 @@ name = "open-ocr-llm-eval"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "paddleocr", extra = ["doc-parser"] },
-    { name = "requests" },
+    { name = "accelerate", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "bitsandbytes", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "ollama", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "paddleocr", extra = ["doc-parser"], marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "torch", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "transformers", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 
 [package.optional-dependencies]
 cpu = [
-    { name = "paddlepaddle" },
+    { name = "paddlepaddle", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
 ]
 gpu = [
-    { name = "paddlepaddle-gpu" },
+    { name = "paddlepaddle-gpu", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "accelerate", specifier = ">=1.13.0" },
+    { name = "bitsandbytes", specifier = ">=0.49.2" },
+    { name = "ollama", specifier = ">=0.6.1" },
     { name = "paddleocr", extras = ["doc-parser"] },
     { name = "paddlepaddle", marker = "extra == 'cpu'", specifier = "==3.2.1", index = "https://www.paddlepaddle.org.cn/packages/stable/cpu/" },
     { name = "paddlepaddle-gpu", marker = "extra == 'gpu'", specifier = "==3.2.1", index = "https://www.paddlepaddle.org.cn/packages/stable/cu126/" },
     { name = "requests", specifier = ">=2.31.0" },
+    { name = "torch", specifier = ">=2.11.0", index = "https://download.pytorch.org/whl/cu126" },
+    { name = "transformers", specifier = ">=5.6.1" },
 ]
 provides-extras = ["cpu", "gpu"]
 
@@ -1081,14 +964,14 @@ name = "openai"
 version = "2.32.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "anyio" },
-    { name = "distro" },
-    { name = "httpx" },
-    { name = "jiter" },
-    { name = "pydantic" },
-    { name = "sniffio" },
-    { name = "tqdm" },
-    { name = "typing-extensions" },
+    { name = "anyio", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "distro", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "httpx", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "jiter", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pydantic", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "sniffio", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tqdm", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ed/59/bdcc6b759b8c42dd73afaf5bf8f902c04b37987a5514dbc1c64dba390fef/openai-2.32.0.tar.gz", hash = "sha256:c54b27a9e4cb8d51f0dd94972ffd1a04437efeb259a9e60d8922b8bd26fe55e0", size = 693286, upload-time = "2026-04-15T22:28:19.434Z" }
 wheels = [
@@ -1100,7 +983,7 @@ name = "opencv-contrib-python"
 version = "4.10.0.84"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/1d/33/7b8ec6c4d45e678b26297e4a5e76464a93033a9adcc8c17eac01097065f6/opencv-contrib-python-4.10.0.84.tar.gz", hash = "sha256:4a3eae0ed9cadf1abe9293a6938a25a540e2fd6d7fc308595caa5896c8b36a0c", size = 150433857, upload-time = "2024-06-17T18:30:50.217Z" }
 wheels = [
@@ -1117,7 +1000,7 @@ name = "openpyxl"
 version = "3.1.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "et-xmlfile" },
+    { name = "et-xmlfile", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3d/f9/88d94a75de065ea32619465d2f77b29a0469500e99012523b91cc4141cd1/openpyxl-3.1.5.tar.gz", hash = "sha256:cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050", size = 186464, upload-time = "2024-06-28T14:03:44.161Z" }
 wheels = [
@@ -1129,7 +1012,7 @@ name = "opt-einsum"
 version = "3.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7d/bf/9257e53a0e7715bc1127e15063e831f076723c6cd60985333a1c18878fb8/opt_einsum-3.3.0.tar.gz", hash = "sha256:59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549", size = 73951, upload-time = "2020-07-19T22:40:32.141Z" }
 wheels = [
@@ -1150,10 +1033,10 @@ name = "paddleocr"
 version = "3.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "paddlex", extra = ["ocr-core"] },
-    { name = "pyyaml" },
-    { name = "requests" },
-    { name = "typing-extensions" },
+    { name = "paddlex", extra = ["ocr-core"], marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyyaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/64/34/5078f4a2e8be8f67b26b86d226a4d1f8f108d3c51f9ddfbd586628740e5f/paddleocr-3.5.0.tar.gz", hash = "sha256:4c5b725f4a127e05a7cf9ba3e795de95027a0c0879cfacf5ff29196cf85803e1", size = 2950749, upload-time = "2026-04-21T08:41:19.982Z" }
 wheels = [
@@ -1162,7 +1045,7 @@ wheels = [
 
 [package.optional-dependencies]
 doc-parser = [
-    { name = "paddlex", extra = ["genai-client", "ocr"] },
+    { name = "paddlex", extra = ["genai-client", "ocr"], marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 
 [[package]]
@@ -1170,14 +1053,14 @@ name = "paddlepaddle"
 version = "3.2.1"
 source = { registry = "https://www.paddlepaddle.org.cn/packages/stable/cpu/" }
 dependencies = [
-    { name = "httpx" },
-    { name = "networkx" },
-    { name = "numpy" },
-    { name = "opt-einsum" },
-    { name = "pillow" },
-    { name = "protobuf" },
-    { name = "safetensors" },
-    { name = "typing-extensions" },
+    { name = "httpx", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "networkx", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "numpy", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "opt-einsum", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "pillow", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "protobuf", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "safetensors", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "typing-extensions", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
 ]
 wheels = [
     { url = "https://paddle-whl.bj.bcebos.com/stable/cpu/paddlepaddle/paddlepaddle-3.2.1-cp312-cp312-linux_aarch64.whl" },
@@ -1195,29 +1078,14 @@ name = "paddlepaddle-gpu"
 version = "3.2.1"
 source = { registry = "https://www.paddlepaddle.org.cn/packages/stable/cu126/" }
 dependencies = [
-    { name = "httpx" },
-    { name = "networkx" },
-    { name = "numpy" },
-    { name = "nvidia-cublas-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-cccl-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-cupti-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-nvrtc-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-runtime-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cudnn-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cufft-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cufile-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-curand-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cusolver-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cusparse-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cusparselt-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-nccl-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-nvjitlink-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-nvtx-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "opt-einsum" },
-    { name = "pillow" },
-    { name = "protobuf" },
-    { name = "safetensors" },
-    { name = "typing-extensions" },
+    { name = "httpx", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "networkx", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "numpy", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "opt-einsum", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "pillow", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "protobuf", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "safetensors", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
+    { name = "typing-extensions", marker = "platform_machine == 'AMD64' and sys_platform == 'win32'" },
 ]
 wheels = [
     { url = "https://paddle-whl.bj.bcebos.com/stable/cu126/paddlepaddle-gpu/paddlepaddle_gpu-3.2.1-cp312-cp312-linux_x86_64.whl" },
@@ -1231,24 +1099,24 @@ name = "paddlex"
 version = "3.5.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "aistudio-sdk" },
-    { name = "chardet" },
-    { name = "colorlog" },
-    { name = "filelock" },
-    { name = "huggingface-hub" },
-    { name = "modelscope" },
-    { name = "numpy" },
-    { name = "packaging" },
-    { name = "pandas" },
-    { name = "pillow" },
-    { name = "prettytable" },
-    { name = "py-cpuinfo" },
-    { name = "pydantic" },
-    { name = "pyyaml" },
-    { name = "requests" },
-    { name = "ruamel-yaml" },
-    { name = "typing-extensions" },
-    { name = "ujson" },
+    { name = "aistudio-sdk", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "chardet", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "colorlog", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "filelock", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "huggingface-hub", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "modelscope", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pandas", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pillow", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "prettytable", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "py-cpuinfo", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pydantic", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyyaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "ruamel-yaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "ujson", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/45/c3/9c806dcd4a3fb83d40c02f2baf8db8cc6986e3bdeb722bd51608aa1c3e09/paddlex-3.5.1.tar.gz", hash = "sha256:b40583039cf0edbb0fe8d4ab874788ed99042265d638abe10af5e20fceb083e4", size = 4281738, upload-time = "2026-04-22T11:55:39.411Z" }
 wheels = [
@@ -1257,38 +1125,38 @@ wheels = [
 
 [package.optional-dependencies]
 genai-client = [
-    { name = "openai" },
+    { name = "openai", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 ocr = [
-    { name = "beautifulsoup4" },
-    { name = "einops" },
-    { name = "ftfy" },
-    { name = "imagesize" },
-    { name = "jinja2" },
-    { name = "latex2mathml" },
-    { name = "lxml" },
-    { name = "opencv-contrib-python" },
-    { name = "openpyxl" },
-    { name = "premailer" },
-    { name = "pyclipper" },
-    { name = "pypdfium2" },
-    { name = "python-bidi" },
-    { name = "regex" },
-    { name = "safetensors" },
-    { name = "scikit-learn" },
-    { name = "scipy" },
-    { name = "sentencepiece" },
-    { name = "shapely" },
-    { name = "tiktoken" },
-    { name = "tokenizers" },
+    { name = "beautifulsoup4", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "einops", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "ftfy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "imagesize", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "jinja2", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "latex2mathml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "lxml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "opencv-contrib-python", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "openpyxl", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "premailer", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyclipper", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pypdfium2", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "python-bidi", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "regex", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "safetensors", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "scikit-learn", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "scipy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "sentencepiece", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "shapely", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tiktoken", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tokenizers", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 ocr-core = [
-    { name = "imagesize" },
-    { name = "opencv-contrib-python" },
-    { name = "pyclipper" },
-    { name = "pypdfium2" },
-    { name = "python-bidi" },
-    { name = "shapely" },
+    { name = "imagesize", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "opencv-contrib-python", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyclipper", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pypdfium2", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "python-bidi", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "shapely", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 
 [[package]]
@@ -1296,9 +1164,9 @@ name = "pandas"
 version = "3.0.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
-    { name = "python-dateutil" },
-    { name = "tzdata", marker = "sys_platform == 'emscripten' or sys_platform == 'win32' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "python-dateutil", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tzdata", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/da/99/b342345300f13440fe9fe385c3c481e2d9a595ee3bab4d3219247ac94e9a/pandas-3.0.2.tar.gz", hash = "sha256:f4753e73e34c8d83221ba58f232433fca2748be8b18dbca02d242ed153945043", size = 4645855, upload-time = "2026-03-31T06:48:30.816Z" }
 wheels = [
@@ -1417,11 +1285,11 @@ name = "premailer"
 version = "3.10.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cachetools" },
-    { name = "cssselect" },
-    { name = "cssutils" },
-    { name = "lxml" },
-    { name = "requests" },
+    { name = "cachetools", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "cssselect", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "cssutils", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "lxml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a3/6f/e49bd31941eff2987076383fa6d811eb785a28f498f5bb131e981bd71e13/premailer-3.10.0.tar.gz", hash = "sha256:d1875a8411f5dc92b53ef9f193db6c0f879dc378d618e0ad292723e388bfe4c2", size = 24342, upload-time = "2021-08-02T20:32:54.328Z" }
 wheels = [
@@ -1433,7 +1301,7 @@ name = "prettytable"
 version = "3.17.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "wcwidth" },
+    { name = "wcwidth", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/79/45/b0847d88d6cfeb4413566738c8bbf1e1995fad3d42515327ff32cc1eb578/prettytable-3.17.0.tar.gz", hash = "sha256:59f2590776527f3c9e8cf9fe7b66dd215837cca96a9c39567414cbc632e8ddb0", size = 67892, upload-time = "2025-11-14T17:33:20.212Z" }
 wheels = [
@@ -1557,10 +1425,10 @@ name = "pydantic"
 version = "2.13.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "annotated-types" },
-    { name = "pydantic-core" },
-    { name = "typing-extensions" },
-    { name = "typing-inspection" },
+    { name = "annotated-types", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pydantic-core", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-inspection", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d9/e4/40d09941a2cebcb20609b86a559817d5b9291c49dd6f8c87e5feffbe703a/pydantic-2.13.3.tar.gz", hash = "sha256:af09e9d1d09f4e7fe37145c1f577e1d61ceb9a41924bf0094a36506285d0a84d", size = 844068, upload-time = "2026-04-20T14:46:43.632Z" }
 wheels = [
@@ -1572,7 +1440,7 @@ name = "pydantic-core"
 version = "2.46.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/2a/ef/f7abb56c49382a246fd2ce9c799691e3c3e7175ec74b14d99e798bcddb1a/pydantic_core-2.46.3.tar.gz", hash = "sha256:41c178f65b8c29807239d47e6050262eb6bf84eb695e41101e62e38df4a5bc2c", size = 471412, upload-time = "2026-04-20T14:40:56.672Z" }
 wheels = [
@@ -1729,7 +1597,7 @@ name = "python-dateutil"
 version = "2.9.0.post0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "six" },
+    { name = "six", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432, upload-time = "2024-03-01T18:36:20.211Z" }
 wheels = [
@@ -1855,10 +1723,10 @@ name = "requests"
 version = "2.33.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "certifi" },
-    { name = "charset-normalizer" },
-    { name = "idna" },
-    { name = "urllib3" },
+    { name = "certifi", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "charset-normalizer", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "idna", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "urllib3", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz", hash = "sha256:18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517", size = 134120, upload-time = "2026-03-30T16:09:15.531Z" }
 wheels = [
@@ -1870,8 +1738,8 @@ name = "rich"
 version = "15.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "markdown-it-py" },
-    { name = "pygments" },
+    { name = "markdown-it-py", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pygments", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz", hash = "sha256:edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36", size = 230680, upload-time = "2026-04-12T08:24:00.75Z" }
 wheels = [
@@ -1914,10 +1782,10 @@ name = "scikit-learn"
 version = "1.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "joblib" },
-    { name = "numpy" },
-    { name = "scipy" },
-    { name = "threadpoolctl" },
+    { name = "joblib", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "scipy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "threadpoolctl", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0e/d4/40988bf3b8e34feec1d0e6a051446b1f66225f8529b9309becaeef62b6c4/scikit_learn-1.8.0.tar.gz", hash = "sha256:9bccbb3b40e3de10351f8f5068e105d0f4083b1a65fa07b6634fbc401a6287fd", size = 7335585, upload-time = "2025-12-10T07:08:53.618Z" }
 wheels = [
@@ -1958,7 +1826,7 @@ name = "scipy"
 version = "1.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz", hash = "sha256:95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0", size = 30573822, upload-time = "2026-02-23T00:26:24.851Z" }
 wheels = [
@@ -2064,11 +1932,11 @@ wheels = [
 
 [[package]]
 name = "setuptools"
-version = "82.0.1"
+version = "81.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/4f/db/cfac1baf10650ab4d1c111714410d2fbb77ac5a616db26775db562c8fab2/setuptools-82.0.1.tar.gz", hash = "sha256:7d872682c5d01cfde07da7bccc7b65469d3dca203318515ada1de5eda35efbf9", size = 1152316, upload-time = "2026-03-09T12:47:17.221Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0d/1c/73e719955c59b8e424d015ab450f51c0af856ae46ea2da83eba51cc88de1/setuptools-81.0.0.tar.gz", hash = "sha256:487b53915f52501f0a79ccfd0c02c165ffe06631443a886740b91af4b7a5845a", size = 1198299, upload-time = "2026-02-06T21:10:39.601Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9d/76/f789f7a86709c6b087c5a2f52f911838cad707cc613162401badc665acfe/setuptools-82.0.1-py3-none-any.whl", hash = "sha256:a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb", size = 1006223, upload-time = "2026-03-09T12:47:15.026Z" },
+    { url = "https://files.pythonhosted.org/packages/e1/e3/c164c88b2e5ce7b24d667b9bd83589cf4f3520d97cad01534cd3c4f55fdb/setuptools-81.0.0-py3-none-any.whl", hash = "sha256:fdd925d5c5d9f62e4b74b30d6dd7828ce236fd6ed998a08d81de62ce5a6310d6", size = 1062021, upload-time = "2026-02-06T21:10:37.175Z" },
 ]
 
 [[package]]
@@ -2076,7 +1944,7 @@ name = "shapely"
 version = "2.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/4d/bc/0989043118a27cccb4e906a46b7565ce36ca7b57f5a18b78f4f1b0f72d9d/shapely-2.1.2.tar.gz", hash = "sha256:2ed4ecb28320a433db18a5bf029986aa8afcfd740745e78847e330d5d94922a9", size = 315489, upload-time = "2025-09-24T13:51:41.432Z" }
 wheels = [
@@ -2159,6 +2027,18 @@ wheels = [
 ]
 
 [[package]]
+name = "sympy"
+version = "1.14.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mpmath", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/83/d3/803453b36afefb7c2bb238361cd4ae6125a569b4db67cd9e79846ba2d68c/sympy-1.14.0.tar.gz", hash = "sha256:d3d3fe8df1e5a0b42f0e7bdf50541697dbe7d23746e894990c030e2b05e72517", size = 7793921, upload-time = "2025-04-27T18:05:01.611Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl", hash = "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5", size = 6299353, upload-time = "2025-04-27T18:04:59.103Z" },
+]
+
+[[package]]
 name = "threadpoolctl"
 version = "3.6.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2172,8 +2052,8 @@ name = "tiktoken"
 version = "0.12.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "regex" },
-    { name = "requests" },
+    { name = "regex", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "requests", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7d/ab/4d017d0f76ec3171d469d80fc03dfbb4e48a4bcaddaa831b31d526f05edc/tiktoken-0.12.0.tar.gz", hash = "sha256:b18ba7ee2b093863978fcb14f74b3707cdc8d4d4d3836853ce7ec60772139931", size = 37806, upload-time = "2025-10-06T20:22:45.419Z" }
 wheels = [
@@ -2219,7 +2099,7 @@ name = "tokenizers"
 version = "0.22.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "huggingface-hub" },
+    { name = "huggingface-hub", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/73/6f/f80cfef4a312e1fb34baf7d85c72d4411afde10978d4657f8cdd811d3ccc/tokenizers-0.22.2.tar.gz", hash = "sha256:473b83b915e547aa366d1eee11806deaf419e17be16310ac0a14077f1e28f917", size = 372115, upload-time = "2026-01-05T10:45:15.988Z" }
 wheels = [
@@ -2241,11 +2121,42 @@ wheels = [
 ]
 
 [[package]]
+name = "torch"
+version = "2.11.0+cu126"
+source = { registry = "https://download.pytorch.org/whl/cu126" }
+dependencies = [
+    { name = "filelock", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "fsspec", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "jinja2", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "networkx", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "setuptools", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "sympy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+]
+wheels = [
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp312-cp312-manylinux_2_28_aarch64.whl", upload-time = "2026-03-23T14:59:37Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp312-cp312-manylinux_2_28_x86_64.whl", upload-time = "2026-03-23T14:59:37Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp312-cp312-win_amd64.whl", upload-time = "2026-03-23T14:59:37Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313-manylinux_2_28_aarch64.whl", upload-time = "2026-03-23T14:59:44Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313-manylinux_2_28_x86_64.whl", upload-time = "2026-03-23T14:59:51Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313-win_amd64.whl", upload-time = "2026-03-23T14:59:51Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313t-manylinux_2_28_aarch64.whl", upload-time = "2026-03-23T14:59:56Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313t-manylinux_2_28_x86_64.whl", upload-time = "2026-03-23T15:00:03Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp313-cp313t-win_amd64.whl", upload-time = "2026-03-23T15:00:07Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314-manylinux_2_28_aarch64.whl", upload-time = "2026-03-23T15:00:20Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314-manylinux_2_28_x86_64.whl", upload-time = "2026-03-23T15:00:21Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314-win_amd64.whl", upload-time = "2026-03-23T15:00:27Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314t-manylinux_2_28_aarch64.whl", upload-time = "2026-03-23T15:00:30Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314t-manylinux_2_28_x86_64.whl", upload-time = "2026-03-23T15:00:37Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu126/torch-2.11.0%2Bcu126-cp314-cp314t-win_amd64.whl", upload-time = "2026-03-23T15:00:39Z" },
+]
+
+[[package]]
 name = "tqdm"
 version = "4.67.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "colorama", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/09/a9/6ba95a270c6f1fbcd8dac228323f2777d886cb206987444e4bce66338dd4/tqdm-4.67.3.tar.gz", hash = "sha256:7d825f03f89244ef73f1d4ce193cb1774a8179fd96f31d7e1dcde62092b960bb", size = 169598, upload-time = "2026-02-03T17:35:53.048Z" }
 wheels = [
@@ -2253,14 +2164,34 @@ wheels = [
 ]
 
 [[package]]
+name = "transformers"
+version = "5.6.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "numpy", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "packaging", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "pyyaml", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "regex", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "safetensors", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tokenizers", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "tqdm", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "typer", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d7/d2/fa03adfb3e2774fd436be0eb725b9c3cbf6f214e11cbeebcdffb073062e7/transformers-5.6.1.tar.gz", hash = "sha256:178dd446d12a29583deed4b27fd229ecb3751100853deee09ff151a5ff9032c6", size = 8311684, upload-time = "2026-04-23T08:20:48.635Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/38/de/345a4dd872d1d118d1e37c95d7252d8fe1cbe8b5139d10283884448d2672/transformers-5.6.1-py3-none-any.whl", hash = "sha256:f41b9dbe5fcaaad577d4004dcfa14303e372429772b81c21dbf2443aa8ee61e9", size = 10364805, upload-time = "2026-04-23T08:20:44.621Z" },
+]
+
+[[package]]
 name = "typer"
 version = "0.24.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "annotated-doc" },
-    { name = "click" },
-    { name = "rich" },
-    { name = "shellingham" },
+    { name = "annotated-doc", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "click", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "rich", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
+    { name = "shellingham", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/83/b8/9ebb531b6c2d377af08ac6746a5df3425b21853a5d2260876919b58a2a4a/typer-0.24.2.tar.gz", hash = "sha256:ec070dcfca1408e85ee203c6365001e818c3b7fffe686fd07ff2d68095ca0480", size = 119849, upload-time = "2026-04-22T17:45:34.413Z" }
 wheels = [
@@ -2281,7 +2212,7 @@ name = "typing-inspection"
 version = "0.4.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions" },
+    { name = "typing-extensions", marker = "(platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine != 'AMD64' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu') or (sys_platform != 'win32' and extra == 'extra-17-open-ocr-llm-eval-cpu' and extra == 'extra-17-open-ocr-llm-eval-gpu')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/55/e3/70399cb7dd41c10ac53367ae42139cf4b1ca5f36bb3dc6c9d33acdb43655/typing_inspection-0.4.2.tar.gz", hash = "sha256:ba561c48a67c5958007083d386c3295464928b01faa735ab8547c5692e87f464", size = 75949, upload-time = "2025-10-01T02:14:41.687Z" }
 wheels = [
