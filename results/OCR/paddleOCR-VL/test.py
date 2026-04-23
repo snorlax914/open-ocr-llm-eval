@@ -1,63 +1,27 @@
-from PIL import Image
-import torch
-from transformers import AutoProcessor, AutoModelForImageTextToText
+from pathlib import Path
 
-# ---- Settings ----
-model_path = "PaddlePaddle/PaddleOCR-VL-1.5"
-image_path = "./test.jpg"
-task = "ocr" # Options: 'ocr' | 'table' | 'chart' | 'formula' | 'spotting' | 'seal'
-# ------------------
+from paddleocr import PaddleOCRVL
 
-# ---- Image Preprocessing For Spotting ----
-image = Image.open(image_path).convert("RGB")
-orig_w, orig_h = image.size
-spotting_upscale_threshold = 1500
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parents[2]
+INPUT_ROOT = REPO_ROOT / "data" / "OCR_sample"
+OUTPUT_ROOT = SCRIPT_DIR / "output"
+IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp"}
 
-if task == "spotting" and orig_w < spotting_upscale_threshold and orig_h < spotting_upscale_threshold:
-    process_w, process_h = orig_w * 2, orig_h * 2
-    try:
-        resample_filter = Image.Resampling.LANCZOS
-    except AttributeError:
-        resample_filter = Image.LANCZOS
-    image = image.resize((process_w, process_h), resample_filter)
+pipeline = PaddleOCRVL(device="gpu")
 
-# Set max_pixels: use 1605632 for spotting, otherwise use default ~1M pixels
-max_pixels = 2048 * 28 * 28 if task == "spotting" else 1280 * 28 * 28
-# ---------------------------
+image_paths = sorted(
+    p for p in INPUT_ROOT.rglob("*") if p.suffix.lower() in IMAGE_EXTS
+)
+print(f"Found {len(image_paths)} images under {INPUT_ROOT}")
 
-# -------- Inference --------
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-PROMPTS = {
-    "ocr": "OCR:",
-    "table": "Table Recognition:",
-    "formula": "Formula Recognition:",
-    "chart": "Chart Recognition:",
-    "spotting": "Spotting:",
-    "seal": "Seal Recognition:",
-}
+for idx, img_path in enumerate(image_paths, start=1):
+    rel_dir = img_path.parent.relative_to(INPUT_ROOT)
+    save_dir = OUTPUT_ROOT / rel_dir / img_path.stem
+    save_dir.mkdir(parents=True, exist_ok=True)
 
-model = AutoModelForImageTextToText.from_pretrained(model_path, torch_dtype=torch.bfloat16).to(DEVICE).eval()
-processor = AutoProcessor.from_pretrained(model_path)
+    print(f"[{idx}/{len(image_paths)}] {img_path.relative_to(REPO_ROOT)}")
+    output = pipeline.predict(str(img_path))
 
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {"type": "image", "image": image},
-            {"type": "text", "text": PROMPTS[task]},
-        ]
-    }
-]
-inputs = processor.apply_chat_template(
-    messages,
-    add_generation_prompt=True,
-    tokenize=True,
-    return_dict=True,
-    return_tensors="pt",
-    images_kwargs={"size": {"shortest_edge": processor.image_processor.min_pixels, "longest_edge": max_pixels}},
-).to(model.device)
-
-outputs = model.generate(**inputs, max_new_tokens=512)
-result = processor.decode(outputs[0][inputs["input_ids"].shape[-1]:-1])
-print(result)
-# ---------------------------
+    for res in output:
+        res.save_to_markdown(save_path=str(save_dir))
