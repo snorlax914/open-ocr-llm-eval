@@ -1,0 +1,48 @@
+{
+  "total": 40,
+  "correct": 40,
+  "accuracy": 1.0,
+  "parse_fail": 0,
+  "errors": 0,
+  "avg_latency_ms": 1107.425,
+  "per_class": {
+    "신고서": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 10
+    },
+    "신청서": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 10
+    },
+    "위임장": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 10
+    },
+    "확인서": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 10
+    }
+  },
+  "confusion": {
+    "신고서": {
+      "신고서": 10
+    },
+    "신청서": {
+      "신청서": 10
+    },
+    "위임장": {
+      "위임장": 10
+    },
+    "확인서": {
+      "확인서": 10
+    }
+  }
+}
