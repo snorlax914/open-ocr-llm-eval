@@ -62,7 +62,7 @@ PROMPTS = {
 5. 반드시 아래 JSON 형식으로만 응답하고, 다른 설명은 포함하지 않습니다.
 
 [출력 형식]
-{{"category": "<카테고리명>", "is_new_category": <true|false>, "confidence": <0.0~1.0>, "key_evidence": "<판별 근거가 된 핵심 문구 한 줄>"}}
+{{"category": "사업자등록증", "is_new_category": false, "key_evidence": "사업자등록증 등록번호"}}
 
 [문서 본문]
 {ocr_text}""",
@@ -82,7 +82,7 @@ Given OCR-extracted text, determine the document category.
 5. Respond ONLY in the JSON format below. No explanations outside JSON.
 
 [Output format]
-{{"category": "<category name in Korean>", "is_new_category": <true|false>, "confidence": <0.0-1.0>, "key_evidence": "<one-line key phrase supporting the decision>"}}
+{{"category": "사업자등록증", "is_new_category": false, "key_evidence": "사업자등록증 등록번호"}}
 
 [Document text]
 {ocr_text}""",
@@ -100,8 +100,8 @@ Given OCR-extracted text, determine the document category.
 4. If OCR is too noisy to classify, return "판별불가".
 5. Output must be valid JSON only. No prose, no markdown fences.
 
-[Output schema]
-{{"category": string, "is_new_category": boolean, "confidence": number between 0.0 and 1.0, "key_evidence": string (one Korean line, max 40 chars)}}
+[Output format]
+{{"category": "사업자등록증", "is_new_category": false, "key_evidence": "사업자등록증 등록번호"}}
 
 [OCR text]
 {ocr_text}""",
