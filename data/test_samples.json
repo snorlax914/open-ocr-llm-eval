@@ -1,0 +1,9 @@
+[
+  {
+    "id": "sample_001",
+    "ocr_text": "여기에 OCR 추출 텍스트를 넣으세요",
+    "ground_truth": "사업자등록증",
+    "language": "ko",
+    "note": "샘플 데이터 — 실제 OCR 결과로 교체 필요"
+  }
+]
