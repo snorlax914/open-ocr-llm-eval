@@ -6,14 +6,28 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "requests>=2.31.0",
-    "paddlepaddle==3.2.1",
     "paddleocr[doc-parser]",
 ]
+
+[project.optional-dependencies]
+cpu = ["paddlepaddle==3.2.1"]
+gpu = ["paddlepaddle-gpu==3.2.1"]
 
 [[tool.uv.index]]
 name = "paddle-cpu"
 url = "https://www.paddlepaddle.org.cn/packages/stable/cpu/"
 explicit = true
 
+[[tool.uv.index]]
+name = "paddle-gpu"
+url = "https://www.paddlepaddle.org.cn/packages/stable/cu126/"
+explicit = true
+
 [tool.uv.sources]
 paddlepaddle = { index = "paddle-cpu" }
+paddlepaddle-gpu = { index = "paddle-gpu" }
+
+[tool.uv]
+conflicts = [
+    [{ extra = "cpu" }, { extra = "gpu" }],
+]
