@@ -1,0 +1,613 @@
+{
+    "input_path": "./test.png",
+    "page_index": null,
+    "page_count": null,
+    "width": 2480,
+    "height": 3508,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "제 신 고 서",
+            "block_bbox": [
+                1048,
+                71,
+                1429,
+                149
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    1048.0,
+                    71.0
+                ],
+                [
+                    1429.0,
+                    71.0
+                ],
+                [
+                    1429.0,
+                    149.0
+                ],
+                [
+                    1048.0,
+                    149.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "앞",
+            "block_bbox": [
+                846,
+                472,
+                888,
+                520
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    846.0,
+                    472.0
+                ],
+                [
+                    888.0,
+                    472.0
+                ],
+                [
+                    888.0,
+                    520.0
+                ],
+                [
+                    846.0,
+                    520.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td rowspan=\"2\">결재</td><td>팀 원</td><td>팀 장</td><td>영업점장</td><td>감사통합책임자</td></tr><tr><td></td><td></td><td></td><td></td></tr></table>",
+            "block_bbox": [
+                1678,
+                317,
+                2361,
+                515
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    1678.0,
+                    317.0
+                ],
+                [
+                    2361.0,
+                    317.0
+                ],
+                [
+                    2361.0,
+                    515.0
+                ],
+                [
+                    1678.0,
+                    515.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>전산인자란</td></tr></table>",
+            "block_bbox": [
+                115,
+                554,
+                2365,
+                1685
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    115.0,
+                    554.0
+                ],
+                [
+                    2365.0,
+                    554.0
+                ],
+                [
+                    2365.0,
+                    1685.0
+                ],
+                [
+                    115.0,
+                    1685.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "사고신고/변경/재발급신청(해당되는 내용에 표시하고 사실대로 기재하여 주시기 바랍니다.)",
+            "block_bbox": [
+                123,
+                1722,
+                1582,
+                1772
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    123.0,
+                    1722.0
+                ],
+                [
+                    1582.0,
+                    1722.0
+                ],
+                [
+                    1582.0,
+                    1772.0
+                ],
+                [
+                    123.0,
+                    1772.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>계좌번호</td><td colspan=\"4\">488649-24-515958</td><td>예금주명</td><td>등 중현</td></tr><tr><td>사고신고</td><td colspan=\"6\">☐통장/증서 분실(재발급 ☐여 ☐부) ☐예금주사망 ☐기타( ) ☐입금 지급불가 ☐지급정지 ☐입금정지 ☐일부 지급정지(금액 원) ☐입금·지급정지 사유: ☐사고신고 철회( 철회내용 )</td></tr><tr><td rowspan=\"3\">변  경</td><td colspan=\"6\">☐비밀번호 ☐명의 ☑주소(☐자택 ☐직장) ☐전화번호(☐자택 ☐직장 ☐휴대폰) ☐대표자 ☐부기명 ☐예금의 전·출입 ☐기타( )</td></tr><tr><td>변경 전</td><td>경기도</td><td>양구군</td><td>쌍송리</td><td>735</td><td></td></tr><tr><td>변경 후</td><td>부산광역시</td><td>서산시</td><td>노루손이길</td><td>317</td><td></td></tr><tr><td>기타 등록 또는 신청</td><td colspan=\"6\">☐무인감이월해제 ☐사업용계좌 등록 ☐질권 설정 ☐무이자 등록 ☐잔액조회통보제외 등록 ☐거래중지편입제외 등록 ☐잔액증명 발급해제 ☐기타( )</td></tr></table>",
+            "block_bbox": [
+                113,
+                1783,
+                2363,
+                2537
+            ],
+            "block_id": 5,
+            "block_order": null,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    113.0,
+                    1783.0
+                ],
+                [
+                    2363.0,
+                    1783.0
+                ],
+                [
+                    2363.0,
+                    2537.0
+                ],
+                [
+                    113.0,
+                    2537.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "본인명의의 위 예금(신탁)에 대하여 위와 같이 신청하니 처리하여 주시기 바라며, 추후 상기 신고와 관련하여 발생하는 문제는 본인 등이 연대하여 책임을 지고 귀행에는 손해를 끼치지 않을 것을 확약하고, 아울러 신고 및 재발급 이전의 거래상 권리의무를 인정합니다.",
+            "block_bbox": [
+                116,
+                2559,
+                2367,
+                2670
+            ],
+            "block_id": 6,
+            "block_order": 1,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    116.0,
+                    2559.0
+                ],
+                [
+                    2367.0,
+                    2559.0
+                ],
+                [
+                    2367.0,
+                    2670.0
+                ],
+                [
+                    116.0,
+                    2670.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "20 22년 10월 8일",
+            "block_bbox": [
+                1022,
+                2697,
+                1461,
+                2747
+            ],
+            "block_id": 7,
+            "block_order": null,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    1022.0,
+                    2697.0
+                ],
+                [
+                    1461.0,
+                    2697.0
+                ],
+                [
+                    1461.0,
+                    2747.0
+                ],
+                [
+                    1022.0,
+                    2747.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td rowspan=\"3\">신청인(예금주)</td><td>주 소</td><td>대구광역시 강남구 고산리 907</td><td>전화번호</td><td>193-4716-6533</td><td rowspan=\"2\">본인확인</td></tr><tr><td>주민등록번호</td><td>753117-6121241</td><td rowspan=\"2\">성명</td><td rowspan=\"2\">초졸만</td></tr><tr><td>사업자번호</td><td></td><td>인감대조</td></tr><tr><td rowspan=\"2\">대리인(연대보증인)</td><td>주 소</td><td></td><td>전화번호</td><td></td><td rowspan=\"2\"></td></tr><tr><td>주민등록번호</td><td></td><td>성명</td><td></td></tr></table>",
+            "block_bbox": [
+                113,
+                2762,
+                2360,
+                3268
+            ],
+            "block_id": 8,
+            "block_order": null,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    113.0,
+                    2762.0
+                ],
+                [
+                    2360.0,
+                    2762.0
+                ],
+                [
+                    2360.0,
+                    3268.0
+                ],
+                [
+                    113.0,
+                    3268.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.6188411712646484,
+                "coordinate": [
+                    1048,
+                    71,
+                    1429,
+                    149
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        1048.0,
+                        71.0
+                    ],
+                    [
+                        1429.0,
+                        71.0
+                    ],
+                    [
+                        1429.0,
+                        149.0
+                    ],
+                    [
+                        1048.0,
+                        149.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.33561187982559204,
+                "coordinate": [
+                    846,
+                    472,
+                    888,
+                    520
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        846.0,
+                        472.0
+                    ],
+                    [
+                        888.0,
+                        472.0
+                    ],
+                    [
+                        888.0,
+                        520.0
+                    ],
+                    [
+                        846.0,
+                        520.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9162389039993286,
+                "coordinate": [
+                    1678,
+                    317,
+                    2361,
+                    515
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        1678.0,
+                        317.0
+                    ],
+                    [
+                        2361.0,
+                        317.0
+                    ],
+                    [
+                        2361.0,
+                        515.0
+                    ],
+                    [
+                        1678.0,
+                        515.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.4677681624889374,
+                "coordinate": [
+                    2168,
+                    547,
+                    2326,
+                    592
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        2168.0,
+                        547.0
+                    ],
+                    [
+                        2326.0,
+                        547.0
+                    ],
+                    [
+                        2326.0,
+                        592.0
+                    ],
+                    [
+                        2168.0,
+                        592.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.4389530122280121,
+                "coordinate": [
+                    115,
+                    554,
+                    2365,
+                    1685
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        115.0,
+                        554.0
+                    ],
+                    [
+                        2365.0,
+                        554.0
+                    ],
+                    [
+                        2365.0,
+                        1685.0
+                    ],
+                    [
+                        115.0,
+                        1685.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.6033861637115479,
+                "coordinate": [
+                    123,
+                    1722,
+                    1582,
+                    1772
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        123.0,
+                        1722.0
+                    ],
+                    [
+                        1582.0,
+                        1722.0
+                    ],
+                    [
+                        1582.0,
+                        1772.0
+                    ],
+                    [
+                        123.0,
+                        1772.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9570634961128235,
+                "coordinate": [
+                    113,
+                    1783,
+                    2363,
+                    2537
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        113.0,
+                        1783.0
+                    ],
+                    [
+                        2363.0,
+                        1783.0
+                    ],
+                    [
+                        2363.0,
+                        2537.0
+                    ],
+                    [
+                        113.0,
+                        2537.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.6702439188957214,
+                "coordinate": [
+                    116,
+                    2559,
+                    2367,
+                    2670
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        116.0,
+                        2559.0
+                    ],
+                    [
+                        2367.0,
+                        2559.0
+                    ],
+                    [
+                        2367.0,
+                        2670.0
+                    ],
+                    [
+                        116.0,
+                        2670.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.7903677225112915,
+                "coordinate": [
+                    1022,
+                    2697,
+                    1461,
+                    2747
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        1022.0,
+                        2697.0
+                    ],
+                    [
+                        1461.0,
+                        2697.0
+                    ],
+                    [
+                        1461.0,
+                        2747.0
+                    ],
+                    [
+                        1022.0,
+                        2747.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.960034966468811,
+                "coordinate": [
+                    113,
+                    2762,
+                    2360,
+                    3268
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        113.0,
+                        2762.0
+                    ],
+                    [
+                        2360.0,
+                        2762.0
+                    ],
+                    [
+                        2360.0,
+                        3268.0
+                    ],
+                    [
+                        113.0,
+                        3268.0
+                    ]
+                ]
+            }
+        ]
+    }
+}
