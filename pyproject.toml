@@ -7,6 +7,11 @@ requires-python = ">=3.12"
 dependencies = [
     "requests>=2.31.0",
     "paddleocr[doc-parser]",
+    "transformers>=5.6.1",
+    "accelerate>=1.13.0",
+    "bitsandbytes>=0.49.2",
+    "ollama>=0.6.1",
+    "torch>=2.11.0",
 ]
 
 [project.optional-dependencies]
@@ -23,11 +28,20 @@ name = "paddle-gpu"
 url = "https://www.paddlepaddle.org.cn/packages/stable/cu126/"
 explicit = true
 
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
 [tool.uv.sources]
 paddlepaddle = { index = "paddle-cpu" }
 paddlepaddle-gpu = { index = "paddle-gpu" }
+torch = { index = "pytorch-cu126" }
 
 [tool.uv]
 conflicts = [
     [{ extra = "cpu" }, { extra = "gpu" }],
+]
+environments = [
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
 ]
