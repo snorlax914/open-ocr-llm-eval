@@ -1,13 +1,12 @@
 """
 LLM 카테고리 분류 평가 스크립트
 
-4개 모델 × 3개 프롬프트로 문서 카테고리 분류 성능을 측정한다.
+3개 모델 × 3개 프롬프트로 문서 카테고리 분류 성능을 측정한다.
 측정 항목: 정확도, 속도, JSON 파싱 성공률, 일관성(5회 반복)
 
 사전 준비:
   ollama pull qwen3:8b
   ollama pull exaone3.5
-  ollama pull qwen2.5:7b-instruct
   ollama pull ministral:8b
 
 실행:
@@ -33,7 +32,6 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 MODELS = [
     "qwen3:8b",
     "exaone3.5",
-    "qwen2.5:7b-instruct",
     "ministral:8b",
 ]
 
