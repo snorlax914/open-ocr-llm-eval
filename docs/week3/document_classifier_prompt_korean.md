@@ -24,14 +24,12 @@ Analyze the provided text and determine its category based on the provided list 
 - 포장명세서
 - 선하증권
 - 원산지증명서
-- 기타
 
 [CATEGORY REFERENCE — do not include in output]
 - 상업송장: Commercial invoice — export/import transaction amounts, item descriptions, seller/buyer info
 - 포장명세서: Packing list — cargo packaging units, weights, quantities, dimensions
 - 선하증권: Bill of Lading — maritime transport contract, cargo receipt, title document
 - 원산지증명서: Certificate of Origin — proof of country of origin for export goods
-- 기타: Other logistics documents that do not fit the four categories above
 
 [OUTPUT FORMAT — STRICT]
 - Return ONLY the Korean category name.

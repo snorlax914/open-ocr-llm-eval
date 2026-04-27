@@ -1,9 +1,16 @@
 import re
 
-LABELS = ["상업송장", "포장명세서", "선하증권", "원산지증명서", "기타"]
+# Categories presented to the model in the prompt's [CATEGORY LIST].
+LABELS = ["상업송장", "포장명세서", "선하증권", "원산지증명서"]
+
+# Folder labels used by collect_samples() to derive ground truth from path.
+# `기타` is intentionally absent from LABELS (the prompt) so the model has to
+# either propose a new category or output the unclassifiable sentinel.
+GROUND_TRUTH_LABELS = LABELS + ["기타"]
 
 UNCLASSIFIABLE_KO = "분류 불가"
 UNCLASSIFIABLE_EN = "Unclassifiable"
+OTHER_LABEL = "기타"
 
 
 SYSTEM_PROMPT_KO = """[ROLE]
@@ -29,14 +36,12 @@ Analyze the provided text and determine its category based on the provided list 
 - 포장명세서
 - 선하증권
 - 원산지증명서
-- 기타
 
 [CATEGORY REFERENCE — do not include in output]
 - 상업송장: Commercial invoice — export/import transaction amounts, item descriptions, seller/buyer info
 - 포장명세서: Packing list — cargo packaging units, weights, quantities, dimensions
 - 선하증권: Bill of Lading — maritime transport contract, cargo receipt, title document
 - 원산지증명서: Certificate of Origin — proof of country of origin for export goods
-- 기타: Other logistics documents that do not fit the four categories above
 
 [OUTPUT FORMAT — STRICT]
 - Return ONLY the Korean category name.
@@ -61,7 +66,7 @@ Classify the attached document according to the [CLASSIFICATION RULES] and [CATE
 [PROCESSING ORDER]
 Follow this decision tree in strict order. Stop at the first step that yields a valid result.
 Step 1 — Ambiguity Check: If the document lacks identifiable subject cues (no document-type noun, proper noun, action verb, or domain keyword), output "Unclassifiable".
-Step 2 — Existing Category Match: Map the document's core purpose to one of the five existing categories. If any reasonable match exists, output that category name.
+Step 2 — Existing Category Match: Map the document's core purpose to one of the four existing categories. If any reasonable match exists, output that category name.
 Step 3 — New Category Proposal: Only if Step 2 yields no plausible match, output a newly proposed category name.
 
 [OCR HANDLING]
@@ -70,7 +75,7 @@ The source may contain OCR errors. Base the decision on dominant keywords and ov
 [CLASSIFICATION RULES]
 1. Identify the document's core purpose and select the single most relevant category.
 2. Output exactly ONE category. Do not list secondary categories, even if the document touches multiple areas. Choose the dominant purpose.
-3. Propose a new category ONLY when none of the five existing categories covers the core purpose. When uncertain, choose the closest existing category instead of inventing one. Note: "기타" already exists as a catch-all — do not propose synonyms of it.
+3. Propose a new category ONLY when none of the four existing categories covers the core purpose. When uncertain, choose the closest existing category instead of inventing one.
 4. New-category naming rules (must satisfy ALL):
    a. Noun phrase, 2–6 words.
    b. Domain-appropriate (international logistics, trade, customs, or shipping context).
@@ -83,20 +88,18 @@ The source may contain OCR errors. Base the decision on dominant keywords and ov
 - 포장명세서
 - 선하증권
 - 원산지증명서
-- 기타
 
 [CATEGORY REFERENCE — do not include in output]
 - 상업송장: Commercial invoice — export/import transaction amounts, item descriptions, seller/buyer info
 - 포장명세서: Packing list — cargo packaging units, weights, quantities, dimensions
 - 선하증권: Bill of Lading — maritime transport contract, cargo receipt, title document
 - 원산지증명서: Certificate of Origin — proof of country of origin for export goods
-- 기타: Other logistics documents that do not fit the four categories above
 
 [OUTPUT FORMAT — STRICT]
 Output the category name as PLAIN TEXT on a single line. Nothing else.
 The following are forbidden: markdown syntax (no #, *, **, _, `, >, -, +), code fences, HTML tags, emoji, quotation marks, prefixes such as "Category:" or "Answer:", explanations, reasoning, confidence labels, leading or trailing blank lines, leading or trailing whitespace, and punctuation at the end.
 The output must be EXACTLY one of the following:
-- One of the five existing category names, written verbatim as listed in [CATEGORY LIST].
+- One of the four existing category names, written verbatim as listed in [CATEGORY LIST].
 - A newly proposed category name following the naming rules above.
 - The literal string: Unclassifiable
 """

@@ -12,7 +12,7 @@ Classify the attached document according to the [CLASSIFICATION RULES] and [CATE
 [PROCESSING ORDER]
 Follow this decision tree in strict order. Stop at the first step that yields a valid result.
 Step 1 — Ambiguity Check: If the document lacks identifiable subject cues (no document-type noun, proper noun, action verb, or domain keyword), output Format D.
-Step 2 — Existing Category Match: Map the document's core purpose to one of the five existing categories. If any reasonable match exists, use it (Format A or B).
+Step 2 — Existing Category Match: Map the document's core purpose to one of the four existing categories. If any reasonable match exists, use it (Format A or B).
 Step 3 — New Category Proposal: Only if Step 2 yields no plausible match, propose a new category (Format C).
 
 [OCR HANDLING]
@@ -21,7 +21,7 @@ The source may contain OCR errors. Base the decision on dominant keywords and ov
 [CLASSIFICATION RULES]
 1. Identify the document's core purpose and select the single most relevant category.
 2. Default to a single Primary category. Add a Secondary category ONLY when the document demonstrably serves two distinct purposes of comparable weight. Do not list a Secondary for incidental mentions.
-3. Propose a new category ONLY when none of the five existing categories covers the core purpose. When uncertain, choose the closest existing category instead of inventing one. Note: "기타" already exists as a catch-all — do not propose synonyms of it.
+3. Propose a new category ONLY when none of the four existing categories covers the core purpose. When uncertain, choose the closest existing category instead of inventing one.
 4. New-category naming rules (must satisfy ALL):
    a. Noun phrase, 2–6 words.
    b. Domain-appropriate (international logistics, trade, customs, or shipping context).
@@ -38,7 +38,6 @@ The source may contain OCR errors. Base the decision on dominant keywords and ov
 - 포장명세서 (packing list — cargo packaging units, weights, quantities, dimensions)
 - 선하증권 (Bill of Lading — maritime transport contract, cargo receipt, title document)
 - 원산지증명서 (Certificate of Origin — proof of country of origin for export goods)
-- 기타 (other logistics documents not fitting the four categories above)
 
 [OUTPUT FORMAT — STRICT]
 Output PLAIN TEXT ONLY. The following are forbidden in the output: markdown syntax (no #, *, **, _, `, >, -, +), code fences, HTML tags, emoji, leading or trailing blank lines, and any commentary outside the defined fields. Use exactly one of the four formats below. Each field must appear on its own line, in the exact order shown, using the exact field labels shown (including the colon).
