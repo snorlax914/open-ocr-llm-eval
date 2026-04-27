@@ -30,18 +30,26 @@ The source may contain OCR errors. Base the decision on dominant keywords and ov
    e. Avoid catch-all names such as "Other", "Miscellaneous", "General".
 
 [CATEGORY LIST]
-- Commercial Contracts (chartering, carriage, sale & purchase, other commercial agreements)
-- Operations & Management (ship management, crew, repair, inspection)
-- Insurance & Incidents (coverage, incident reports, claims)
-- Finance (settlements, freight, expenses)
+- Commercial Contracts
+- Operations & Management
+- Insurance & Incidents
+- Finance
 - General Administration & HR
-- Legal & Evidentiary Documents (corporate registry, seal certificates, business licenses, notarized or evidentiary records)
+- Legal & Evidentiary Documents
+
+[CATEGORY REFERENCE — do not include in output]
+- Commercial Contracts: chartering, carriage, sale & purchase, other commercial agreements
+- Operations & Management: ship management, crew, repair, inspection
+- Insurance & Incidents: coverage, incident reports, claims
+- Finance: settlements, freight, expenses
+- General Administration & HR: internal notices, human resources
+- Legal & Evidentiary Documents: corporate registry, seal certificates, business licenses, notarized or evidentiary records
 
 [OUTPUT FORMAT — STRICT]
 Output the category name as PLAIN TEXT on a single line. Nothing else.
 The following are forbidden: markdown syntax (no #, *, **, _, `, >, -, +), code fences, HTML tags, emoji, quotation marks, prefixes such as "Category:" or "Answer:", explanations, reasoning, confidence labels, leading or trailing blank lines, leading or trailing whitespace, and punctuation at the end.
 The output must be EXACTLY one of the following:
-- One of the six existing category names, written verbatim as listed in [CATEGORY LIST] (the descriptive parentheses are NOT part of the name).
+- One of the six existing category names, written verbatim as listed in [CATEGORY LIST].
 - A newly proposed category name following the naming rules above.
 - The literal string: Unclassifiable
 
@@ -51,18 +59,22 @@ Document: "MV OCEAN STAR Time Charter Party (NYPE form)"
 Output: Commercial Contracts
 
 Example 2
-Document: "Berthing incident report and claim filing during Busan port entry"
-Output: Insurance & Incidents
+Document: "선박 수리 및 정기 검사 결과 보고서 (광양항)"
+Output: Operations & Management
 
 Example 3
+Document: "화물 손상에 따른 P&I 클레임 접수 및 사고 경위서"
+Output: Insurance & Incidents
+
+Example 4
 Document: "CII carbon emission regulation compliance monitoring system rollout plan"
 Output: Environmental & Regulatory Compliance
 
-Example 4
-Document: "Please review"
+Example 5
+Document: "내용 확인 후 회신 부탁드립니다."
 Output: Unclassifiable
 
-Example 5
+Example 6
 Document: "Korea Shipping Co., Ltd. business registration certificate copy"
 Output: Legal & Evidentiary Documents
 ```
