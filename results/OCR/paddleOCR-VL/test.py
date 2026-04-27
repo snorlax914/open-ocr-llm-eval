@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 
 from paddleocr import PaddleOCRVL
@@ -8,12 +9,16 @@ INPUT_ROOT = REPO_ROOT / "data" / "OCR_sample"
 OUTPUT_ROOT = SCRIPT_DIR / "output"
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp"}
 
+# Optional subset arg: e.g. `python test.py 물류` scans only data/OCR_sample/물류
+# while still preserving the full relative path under output/.
+scope = INPUT_ROOT / sys.argv[1] if len(sys.argv) > 1 else INPUT_ROOT
+
 pipeline = PaddleOCRVL(device="gpu")
 
 image_paths = sorted(
-    p for p in INPUT_ROOT.rglob("*") if p.suffix.lower() in IMAGE_EXTS
+    p for p in scope.rglob("*") if p.suffix.lower() in IMAGE_EXTS
 )
-print(f"Found {len(image_paths)} images under {INPUT_ROOT}")
+print(f"Found {len(image_paths)} images under {scope}")
 
 for idx, img_path in enumerate(image_paths, start=1):
     rel_dir = img_path.parent.relative_to(INPUT_ROOT)

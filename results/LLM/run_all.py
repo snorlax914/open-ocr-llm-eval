@@ -7,9 +7,9 @@
 사용법:
     uv run python results/LLM/run_all.py
     uv run python results/LLM/run_all.py --skip-existing
-    uv run python results/LLM/run_all.py --models qwen3 exaone    # 일부만
-    uv run python results/LLM/run_all.py --langs ko               # 한국어만
-    uv run python results/LLM/run_all.py --limit 4 --no-evaluate  # 스모크
+    uv run python results/LLM/run_all.py --models qwen3-8b qwen3-4b   # 4B vs 8B 비교
+    uv run python results/LLM/run_all.py --langs ko                   # 한국어만
+    uv run python results/LLM/run_all.py --limit 4 --no-evaluate      # 스모크
 """
 
 from __future__ import annotations
