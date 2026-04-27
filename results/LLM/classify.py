@@ -21,7 +21,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parents[1]
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from prompts import LABELS, build_messages, parse_label
+from prompts import GROUND_TRUTH_LABELS, build_messages, parse_label
 
 OCR_ROOT = REPO_ROOT / "results" / "OCR" / "paddleOCR-VL" / "output"
 OUTPUT_ROOT = SCRIPT_DIR / "output"
@@ -66,7 +66,7 @@ def collect_samples() -> list[tuple[str, Path]]:
         label = None
         for part in md_path.parts:
             normalized = _normalize_part(part)
-            if normalized in LABELS:
+            if normalized in GROUND_TRUTH_LABELS:
                 label = normalized
                 break
         if label is None:
