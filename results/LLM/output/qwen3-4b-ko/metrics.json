@@ -1,70 +1,66 @@
 {
   "total": 52,
-  "correct": 22,
-  "accuracy": 0.4230769230769231,
   "parse_fail": 0,
   "errors": 0,
-  "avg_latency_ms": 3514.25,
+  "avg_latency_ms": 3395.980769230769,
+  "core_total": 39,
+  "core_correct": 18,
+  "core_accuracy": 0.46153846153846156,
   "per_class": {
     "상업송장": {
-      "precision": 0.6666666666666666,
-      "recall": 0.4,
-      "f1": 0.5,
+      "precision": 0.45454545454545453,
+      "recall": 0.3333333333333333,
+      "f1": 0.3846153846153846,
       "support": 15
     },
     "포장명세서": {
-      "precision": 0.4,
-      "recall": 0.36363636363636365,
-      "f1": 0.380952380952381,
+      "precision": 0.625,
+      "recall": 0.45454545454545453,
+      "f1": 0.5263157894736842,
       "support": 11
     },
     "선하증권": {
-      "precision": 0.5714285714285714,
-      "recall": 0.6666666666666666,
-      "f1": 0.6153846153846153,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
       "support": 6
     },
     "원산지증명서": {
-      "precision": 0.6666666666666666,
-      "recall": 0.5714285714285714,
-      "f1": 0.6153846153846153,
+      "precision": 0.35714285714285715,
+      "recall": 0.7142857142857143,
+      "f1": 0.4761904761904762,
       "support": 7
-    },
-    "기타": {
-      "precision": 0.21052631578947367,
-      "recall": 0.3076923076923077,
-      "f1": 0.25,
-      "support": 13
     }
   },
   "confusion": {
     "상업송장": {
-      "상업송장": 6,
-      "기타": 6,
-      "포장명세서": 2,
-      "원산지증명서": 1
+      "포장명세서": 3,
+      "상업송장": 5,
+      "선하증권": 2,
+      "원산지증명서": 5
     },
     "포장명세서": {
-      "상업송장": 1,
-      "포장명세서": 4,
-      "기타": 6
+      "포장명세서": 5,
+      "원산지증명서": 2,
+      "선하증권": 1,
+      "상업송장": 3
     },
     "선하증권": {
-      "선하증권": 4,
+      "원산지증명서": 2,
       "상업송장": 1,
-      "기타": 1
+      "선하증권": 3
     },
     "원산지증명서": {
-      "기타": 2,
-      "상업송장": 1,
-      "원산지증명서": 4
-    },
-    "기타": {
-      "선하증권": 3,
-      "포장명세서": 4,
-      "원산지증명서": 1,
-      "기타": 4,
-      "Looking at the table, it has some numbers like 108, MTS, 720, KG, etc. The table seems to list quantities and weights. Then there's a part about Documentary Credit Number 8738/34723334/CD, which is related to letters of credit. The bank details are there too, like Shinhan Bank in Sichuan. The shipment is from Omishima, Japan to Marugame, Japan. The vessel name is YAN DANG SHAN, and the notify party is Tealty Partners Co., Ltd. in Japan. The beneficiary is Noring Consult Co., Ltd. in Singapore. The manufacturer is Faedo Precision Co": 1
+      "상업송장": 2,
+      "원산지증명서": 5
     }
-  }
+  },
+  "other_total": 13,
+  "other_distribution": {
+    "포장명세서": 1,
+    "선하증권": 5,
+    "상업송장": 1,
+    "원산지증명서": 6
+  },
+  "new_categories": {}
 }

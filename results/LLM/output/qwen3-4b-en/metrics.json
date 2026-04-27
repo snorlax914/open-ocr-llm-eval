@@ -1,10 +1,11 @@
 {
   "total": 52,
-  "correct": 9,
-  "accuracy": 0.17307692307692307,
   "parse_fail": 1,
   "errors": 0,
-  "avg_latency_ms": 3499.8653846153848,
+  "avg_latency_ms": 3398.269230769231,
+  "core_total": 39,
+  "core_correct": 14,
+  "core_accuracy": 0.358974358974359,
   "per_class": {
     "상업송장": {
       "precision": 1.0,
@@ -13,70 +14,66 @@
       "support": 15
     },
     "포장명세서": {
-      "precision": 0.42857142857142855,
-      "recall": 0.2727272727272727,
-      "f1": 0.33333333333333326,
+      "precision": 0.5714285714285714,
+      "recall": 0.36363636363636365,
+      "f1": 0.4444444444444444,
       "support": 11
     },
     "선하증권": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
+      "precision": 0.14285714285714285,
+      "recall": 0.16666666666666666,
+      "f1": 0.15384615384615383,
       "support": 6
     },
     "원산지증명서": {
-      "precision": 0.75,
-      "recall": 0.42857142857142855,
-      "f1": 0.5454545454545454,
+      "precision": 0.35294117647058826,
+      "recall": 0.8571428571428571,
+      "f1": 0.5,
       "support": 7
-    },
-    "기타": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "support": 13
     }
   },
   "confusion": {
     "상업송장": {
-      "포장명세서": 4,
+      "선하증권": 5,
+      "<new_category>": 2,
       "상업송장": 3,
-      "선하증권": 2,
-      "기타": 2,
-      "Unclassifiable": 2,
-      "So, there are clear subject cues. This is not ambiguous": 1,
-      "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan=\"5\">HAMMEHOBAHME/THE GOODS NAME</td><td style='text-align: center; word-wrap: break-word;'>KOJI.</td><td style='text-align: center; word-wrap: break-word;'>LIEHA</td><td style='text-align: center; word-wrap: break-word;'>CYMMA B</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(KOMII.)</td><td style='text-align: center; word-wrap: break-word;'>3A</td><": 1
+      "포장명세서": 3,
+      "<unclassifiable>": 1,
+      "원산지증명서": 1
     },
     "포장명세서": {
-      "기타": 5,
-      "원산지증명서": 1,
-      "<none>": 1,
-      "포장명세서": 3,
+      "원산지증명서": 6,
+      "포장명세서": 4,
       "선하증권": 1
     },
     "선하증권": {
-      "기타": 3,
-      "Proper noun: Not obvious here; it's a generic": 1,
-      "Unclassifiable": 2
-    },
-    "원산지증명서": {
-      "원산지증명서": 3,
-      "기타": 3,
+      "<new_category>": 1,
+      "원산지증명서": 4,
       "선하증권": 1
     },
-    "기타": {
-      "THE NUMBER OF": 1,
-      "The document is labeled as \"CERTIFICATE OF QUALITY\", but it contains shipping and logistics information like bill of lading numbers, ports, shipment": 1,
-      "The document seems to have a clear purpose: it's a certificate of quality with shipping details. It includes a table with vessel information, ports, bill of lading numbers, and commodity details. The title is \"CERTIFICATE OF QUALITY\", which might be a bit misleading": 1,
-      "Beneficiary": 1,
-      "The OCR has errors, but the context is clear. For example, \"R&amp;G\" is likely \"R & G\" for a company, and \"KGS\" is kilograms. The dominant keywords are \"insurance policy": 1,
-      "Domain keyword: The document": 1,
-      "Unclassifiable": 2,
-      "Domain keywords: \"CUSTOMS TARIFF\", \"SHIPMENT FROM\", \"TO\", \"VESSEL\", \"NOTIFY PARTY\", \"MANUFACTURER": 1,
-      "There's": 1,
-      "Domain keywords: VESSEL, VOYAGE, PORT OF LOADING, PORT OF DISCHARGE, BILL OF LADING, COMMODITY, QUANTITY": 1,
-      "Domain keywords: \"CUSTOMS TARIFF NO.\", \"SHIPMENT FROM\", \"VESSEL\", \"NOT": 1,
-      "The document has a clear subject: it's an \"Inspection Certificate\". Also, we see terms like \"Customs Tariff\", \"Shipment": 1
+    "원산지증명서": {
+      "원산지증명서": 6,
+      "<new_category>": 1
     }
+  },
+  "other_total": 13,
+  "other_distribution": {
+    "<unclassifiable>": 3,
+    "<new_category>": 8,
+    "<none>": 1,
+    "선하증권": 1
+  },
+  "new_categories": {
+    "상": 2,
+    "HAMMEHOBAHME/THE GOODS NAME (This is probably \"HAMMEHOBAHME\" is a garbled version of \"GOODS NAME\" or something similar; in context, it might be \"Description of Goods\" or \"Goods Name": 1,
+    "The document has clear subject cues. It's not ambiguous. So, Step": 1,
+    "For example: \"83-14\" (Item Number), \"FILTER-FUEL PUMP\" (Description": 1,
+    "Total: \"THREE HUNDRED NINETY FOUR(394) P": 1,
+    "THE NUMBER OF CREDIT 2148/382862": 1,
+    "Action verbs: The document describes insurance policies, claims procedures, etc. Keywords like \"insured\", \"claim\", \"payable\", \"sailing\", \"transshipped\", \"arrived\", \"loss or damage": 1,
+    "The document is clearly about an inspection": 1,
+    "The document has": 1,
+    "The document has clear": 1,
+    "The OCR content has a table with terms like \"Assured(s)\", \"Policy No.\", \"Claim\", \"Amount insured\", \"Goods and Merchandise": 1
   }
 }

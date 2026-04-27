@@ -1,10 +1,11 @@
 {
   "total": 52,
-  "correct": 38,
-  "accuracy": 0.7307692307692307,
   "parse_fail": 0,
   "errors": 0,
-  "avg_latency_ms": 820.4807692307693,
+  "avg_latency_ms": 769.75,
+  "core_total": 39,
+  "core_correct": 38,
+  "core_accuracy": 0.9743589743589743,
   "per_class": {
     "상업송장": {
       "precision": 1.0,
@@ -25,16 +26,10 @@
       "support": 6
     },
     "원산지증명서": {
-      "precision": 0.875,
+      "precision": 1.0,
       "recall": 1.0,
-      "f1": 0.9333333333333333,
+      "f1": 1.0,
       "support": 7
-    },
-    "기타": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "support": 13
     }
   },
   "confusion": {
@@ -50,14 +45,18 @@
     },
     "원산지증명서": {
       "원산지증명서": 7
-    },
-    "기타": {
-      "Unclassifiable": 7,
-      "Certificate of Origin": 1,
-      "inspection certificate": 1,
-      "Marine Cargo Insurance Policy": 2,
-      "원산지증명서": 1,
-      "InspectionCertificate": 1
     }
+  },
+  "other_total": 13,
+  "other_distribution": {
+    "<new_category>": 8,
+    "<unclassifiable>": 4,
+    "원산지증명서": 1
+  },
+  "new_categories": {
+    "Certificate of Origin": 4,
+    "Inspection Certificate": 1,
+    "Marine Cargo Insurance Policy": 2,
+    "Certificate of Conformity": 1
   }
 }
