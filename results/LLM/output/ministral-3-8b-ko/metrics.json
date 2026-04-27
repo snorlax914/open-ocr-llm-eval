@@ -1,10 +1,10 @@
 {
-  "total": 40,
-  "correct": 33,
-  "accuracy": 0.825,
-  "parse_fail": 0,
+  "total": 12,
+  "correct": 0,
+  "accuracy": 0.0,
+  "parse_fail": 12,
   "errors": 0,
-  "avg_latency_ms": 5320.625,
+  "avg_latency_ms": 46050.5,
   "per_class": {
     "상업송장": {
       "precision": 0.0,
@@ -39,17 +39,10 @@
   },
   "confusion": {
     "신고서": {
-      "신청서": 7,
-      "신고서": 3
+      "<none>": 10
     },
     "신청서": {
-      "신청서": 10
-    },
-    "위임장": {
-      "위임장": 10
-    },
-    "확인서": {
-      "확인서": 10
+      "<none>": 2
     }
   }
 }

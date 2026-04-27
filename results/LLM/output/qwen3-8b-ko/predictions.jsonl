@@ -1,40 +1,52 @@
-{"file": "은행/신고서/IMG_OCR_6_F_0017402/IMG_OCR_6_F_0017402.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1492, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0027902/IMG_OCR_6_F_0027902.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1116, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0042802/IMG_OCR_6_F_0042802.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1180, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0053102/IMG_OCR_6_F_0053102.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1110, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0088402/IMG_OCR_6_F_0088402.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1175, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0089402/IMG_OCR_6_F_0089402.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1062, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0095702/IMG_OCR_6_F_0095702.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1120, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0100902/IMG_OCR_6_F_0100902.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1182, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0104302/IMG_OCR_6_F_0104302.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1115, "error": null}
-{"file": "은행/신고서/IMG_OCR_6_F_0105502/IMG_OCR_6_F_0105502.md", "true": "신고서", "pred": "신고서", "raw": "{\"label\": \"신고서\"}", "latency_ms": 1177, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0002604/IMG_OCR_6_F_0002604.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 1966, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0003410/IMG_OCR_6_F_0003410.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 1084, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0003603/IMG_OCR_6_F_0003603.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 2236, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0004910/IMG_OCR_6_F_0004910.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 1067, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0009107/IMG_OCR_6_F_0009107.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 989, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0009510/IMG_OCR_6_F_0009510.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 993, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0010603/IMG_OCR_6_F_0010603.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 2216, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0011308/IMG_OCR_6_F_0011308.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 1198, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0012310/IMG_OCR_6_F_0012310.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 995, "error": null}
-{"file": "은행/신청서/IMG_OCR_6_F_0013707/IMG_OCR_6_F_0013707.md", "true": "신청서", "pred": "신청서", "raw": "{\"label\": \"신청서\"}", "latency_ms": 972, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0004506/IMG_OCR_6_F_0004506.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 661, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0004609/IMG_OCR_6_F_0004609.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 1234, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0011706/IMG_OCR_6_F_0011706.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 670, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0014406/IMG_OCR_6_F_0014406.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 732, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0017406/IMG_OCR_6_F_0017406.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 695, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0017806/IMG_OCR_6_F_0017806.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 690, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0019106/IMG_OCR_6_F_0019106.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 569, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0028406/IMG_OCR_6_F_0028406.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 575, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0030609/IMG_OCR_6_F_0030609.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 1220, "error": null}
-{"file": "은행/위임장/IMG_OCR_6_F_0043406/IMG_OCR_6_F_0043406.md", "true": "위임장", "pred": "위임장", "raw": "{\"label\": \"위임장\"}", "latency_ms": 602, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0017405/IMG_OCR_6_F_0017405.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1100, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0027905/IMG_OCR_6_F_0027905.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1255, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0042905/IMG_OCR_6_F_0042905.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1022, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0053105/IMG_OCR_6_F_0053105.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1050, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0088405/IMG_OCR_6_F_0088405.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1131, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0089405/IMG_OCR_6_F_0089405.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1194, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0095705/IMG_OCR_6_F_0095705.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1004, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0100905/IMG_OCR_6_F_0100905.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1203, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0104305/IMG_OCR_6_F_0104305.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1172, "error": null}
-{"file": "은행/확인서/IMG_OCR_6_F_0105505/IMG_OCR_6_F_0105505.md", "true": "확인서", "pred": "확인서", "raw": "{\"label\": \"확인서\"}", "latency_ms": 1073, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_000322/IMG_OCR_6_T_NV_000322.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 1164, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_001677/IMG_OCR_6_T_NV_001677.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 1071, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_001774/IMG_OCR_6_T_NV_001774.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 240, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_001825/IMG_OCR_6_T_NV_001825.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 1000, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_001943/IMG_OCR_6_T_NV_001943.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 658, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_002061/IMG_OCR_6_T_NV_002061.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 869, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_002734/IMG_OCR_6_T_NV_002734.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 749, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_002913/IMG_OCR_6_T_NV_002913.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 998, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_003058/IMG_OCR_6_T_NV_003058.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 1977, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_003157/IMG_OCR_6_T_NV_003157.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 750, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_003235/IMG_OCR_6_T_NV_003235.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 663, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_003382/IMG_OCR_6_T_NV_003382.md", "true": "상업송장", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 453, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_003696/IMG_OCR_6_T_NV_003696.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 991, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_004131/IMG_OCR_6_T_NV_004131.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 644, "error": null}
+{"file": "물류/1.상업송장/IMG_OCR_6_T_NV_004574/IMG_OCR_6_T_NV_004574.md", "true": "상업송장", "pred": "상업송장", "raw": "상업송장", "latency_ms": 716, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_000554/IMG_OCR_6_T_PL_000554.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 744, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_000763/IMG_OCR_6_T_PL_000763.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 742, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_001056/IMG_OCR_6_T_PL_001056.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 822, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_001573/IMG_OCR_6_T_PL_001573.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 787, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_001587/IMG_OCR_6_T_PL_001587.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 1810, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_001774/IMG_OCR_6_T_PL_001774.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 812, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_001943/IMG_OCR_6_T_PL_001943.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 2337, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_002061/IMG_OCR_6_T_PL_002061.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 784, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_003519/IMG_OCR_6_T_PL_003519.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 791, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_004301/IMG_OCR_6_T_PL_004301.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 806, "error": null}
+{"file": "물류/2.포장명세서/IMG_OCR_6_T_PL_004423/IMG_OCR_6_T_PL_004423.md", "true": "포장명세서", "pred": "포장명세서", "raw": "포장명세서", "latency_ms": 1761, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_001677/IMG_OCR_6_T_BL_001677.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 1170, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_002596/IMG_OCR_6_T_BL_002596.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 284, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_002597/IMG_OCR_6_T_BL_002597.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 884, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_002734/IMG_OCR_6_T_BL_002734.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 1128, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_003578/IMG_OCR_6_T_BL_003578.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 836, "error": null}
+{"file": "물류/3.선하증권/IMG_OCR_6_T_BL_004826/IMG_OCR_6_T_BL_004826.md", "true": "선하증권", "pred": "선하증권", "raw": "선하증권", "latency_ms": 583, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_001056/IMG_OCR_6_T_CO_001056.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 995, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_001587/IMG_OCR_6_T_CO_001587.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 816, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_001677/IMG_OCR_6_T_CO_001677.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 1005, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_003058/IMG_OCR_6_T_CO_003058.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 1024, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_003522/IMG_OCR_6_T_CO_003522.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 986, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_004131/IMG_OCR_6_T_CO_004131.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 758, "error": null}
+{"file": "물류/4.원산지증명서/IMG_OCR_6_T_CO_004574/IMG_OCR_6_T_CO_004574.md", "true": "원산지증명서", "pred": "원산지증명서", "raw": "원산지증명서", "latency_ms": 759, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_000322/IMG_OCR_6_T_ET_000322.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 603, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_000511/IMG_OCR_6_T_ET_000511.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 626, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_001587/IMG_OCR_6_T_ET_001587.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 586, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_001768/IMG_OCR_6_T_ET_001768.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 624, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_001943/IMG_OCR_6_T_ET_001943.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 951, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_002011/IMG_OCR_6_T_ET_002011.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 583, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_002061/IMG_OCR_6_T_ET_002061.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 640, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_002734/IMG_OCR_6_T_ET_002734.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 763, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_002989/IMG_OCR_6_T_ET_002989.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 535, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_003696/IMG_OCR_6_T_ET_003696.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 547, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_004140/IMG_OCR_6_T_ET_004140.md", "true": "기타", "pred": "검증증명서", "raw": "검증증명서", "latency_ms": 523, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_004514/IMG_OCR_6_T_ET_004514.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 461, "error": null}
+{"file": "물류/5.기타/IMG_OCR_6_T_ET_004658/IMG_OCR_6_T_ET_004658.md", "true": "기타", "pred": "분류 불가", "raw": "분류 불가", "latency_ms": 911, "error": null}
