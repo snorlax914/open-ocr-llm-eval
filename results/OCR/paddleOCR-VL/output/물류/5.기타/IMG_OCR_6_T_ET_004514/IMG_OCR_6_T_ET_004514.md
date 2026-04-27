@@ -1,0 +1,59 @@
+# INSPECTION CERTIFICATE
+
+NO. SNH2018-3-30 DATE: 2013-06-16
+
+* DESCRIPTION OF GOODS: Cam, For Control PCV
+
+TOTAL 915 MTS 615 KG 759 KG
+
+AS PER BENE.'P/I NO. TPU2022-17 DATE : 2001-08-13
+
+* DOCUMENTARY CREDIT NUMBER 3732/88525132/CD
+
+• L/C ISSUING BANK NAME Santander Bank
+
+SWIFT CODE YXGFPABMWLB
+
+ADDRESS 1882 Azumi, Minamiuwagunainancho,
+
+Kagawa, 491-1513 Japan
+
+ $ ^{*} $ CUSTOMS TARIFF NO. 6144/30
+
+*SHIPMENT FROM PUNA, ECUADOR TO KARUNO, JAPAN
+
+* NAME OF VESSEL ALEXANDRA A
+
+* NOTIFY PARTY Pexxtgen Oration Co., Ltd.
+
+Room 608, Woken Street, Zhenghe County,
+
+Guizhou, China 910908
+
+CREDIT NUMBER 5164/45746923/CD
+
+* BENEFICIARY
+
+China Pacific Insurance Co., Ltd.
+
+Room 170, Qinhe Road, Yuci County, Fujian,
+
+China 880574
+
+* MANUFACTURER Jun Poong Co., Ltd.
+
+* PACKING CASE IN CONTAINER
+
+* TOLERANCE TOTAL QUANTITY
+
++ 7 / - 1 PCT
+
+
+
+WE HEREBY CONFIRM AND CERITY THAT GOODS ARE PRODUCED IN CONFORMITY WITH STANDARD K.I.C C3314 AS DECLARED BY MANUFACTURER/SUPPLIER.
+
+Signed by
+
+
+
+<div style="text-align: center;"><img src="imgs/img_in_seal_box_1068_2007_1231_2175.jpg" alt="Image" width="9%" /></div>
