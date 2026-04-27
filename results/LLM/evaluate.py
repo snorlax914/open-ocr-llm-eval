@@ -77,17 +77,17 @@ def print_report(name: str, metrics: dict, records: list[dict]) -> None:
     )
 
     print("\nper-class:")
-    print(f"  {'label':<8} {'P':>6} {'R':>6} {'F1':>6} {'support':>8}")
+    print(f"  {'label':<10} {'P':>6} {'R':>6} {'F1':>6} {'support':>8}")
     for label in LABELS:
         m = metrics["per_class"][label]
-        print(f"  {label:<8} {m['precision']:>6.3f} {m['recall']:>6.3f} {m['f1']:>6.3f} {m['support']:>8}")
+        print(f"  {label:<10} {m['precision']:>6.3f} {m['recall']:>6.3f} {m['f1']:>6.3f} {m['support']:>8}")
 
     print("\nconfusion (rows=true, cols=pred):")
     header_labels = LABELS + ["<none>"]
-    print(f"  {'':<10}" + "".join(f"{l:>8}" for l in header_labels))
+    print(f"  {'':<12}" + "".join(f"{l:>10}" for l in header_labels))
     for true_label in LABELS:
         row = metrics["confusion"].get(true_label, {})
-        print(f"  {true_label:<10}" + "".join(f"{row.get(c, 0):>8}" for c in header_labels))
+        print(f"  {true_label:<12}" + "".join(f"{row.get(c, 0):>10}" for c in header_labels))
 
     misclassified = [r for r in records if r["pred"] != r["true"]]
     if misclassified:

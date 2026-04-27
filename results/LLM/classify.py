@@ -2,8 +2,8 @@
 문서 분류 테스트 러너.
 
 사용법:
-    uv run python results/LLM/classify.py --model qwen3 --lang ko
-    uv run python results/LLM/classify.py --model qwen3 --lang en
+    uv run python results/LLM/classify.py --model qwen3-8b --lang ko
+    uv run python results/LLM/classify.py --model qwen3-4b --lang ko
     uv run python results/LLM/classify.py --model exaone --lang ko
     uv run python results/LLM/classify.py --model ministral --lang en
 """
@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -26,10 +27,15 @@ OCR_ROOT = REPO_ROOT / "results" / "OCR" / "paddleOCR-VL" / "output"
 OUTPUT_ROOT = SCRIPT_DIR / "output"
 
 MODEL_CONFIG = {
-    "qwen3": {
+    "qwen3-8b": {
         "backend": "ollama",
         "model_id": "qwen3:8b",
         "output_dir": "qwen3-8b",
+    },
+    "qwen3-4b": {
+        "backend": "ollama",
+        "model_id": "qwen3:4b",
+        "output_dir": "qwen3-4b",
     },
     "exaone": {
         "backend": "ollama",
@@ -44,14 +50,24 @@ MODEL_CONFIG = {
 }
 
 
+_PREFIX_RE = re.compile(r"^\s*\d+[.\-_)]\s*")
+
+
+def _normalize_part(part: str) -> str:
+    """Strip a leading numeric prefix like '1.', '02-', '3) ' so folder names
+    like '1.상업송장' match the LABELS entry '상업송장'."""
+    return _PREFIX_RE.sub("", part).strip()
+
+
 def collect_samples() -> list[tuple[str, Path]]:
     """Return list of (true_label, markdown_path) for every OCR output file."""
     samples: list[tuple[str, Path]] = []
     for md_path in OCR_ROOT.rglob("*.md"):
         label = None
         for part in md_path.parts:
-            if part in LABELS:
-                label = part
+            normalized = _normalize_part(part)
+            if normalized in LABELS:
+                label = normalized
                 break
         if label is None:
             continue
@@ -79,11 +95,21 @@ class OllamaRunner:
             self.client.pull(model_id)
 
     def __call__(self, messages: list[dict]) -> str:
+        # qwen3 family ignores `think=False` for some sizes (e.g. 4b emits
+        # plain-text reasoning instead of <think>...</think>). Append the
+        # `/no_think` directive supported by Qwen3's chat template as a belt
+        # & suspenders, and give the model enough budget to actually finish
+        # if reasoning still leaks through.
+        msgs = list(messages)
+        if "qwen3" in self.model_id and msgs and msgs[-1].get("role") == "user":
+            last = dict(msgs[-1])
+            last["content"] = last.get("content", "") + "\n\n/no_think"
+            msgs[-1] = last
+
         resp = self.client.chat(
             model=self.model_id,
-            messages=messages,
-            options={"temperature": 0.0, "num_predict": 64},
-            format="json",
+            messages=msgs,
+            options={"temperature": 0.0, "num_predict": 256},
             think=False,
             keep_alive="30s",
         )
@@ -134,7 +160,7 @@ class TransformersRunner:
         with torch.no_grad():
             out = self.model.generate(
                 **inputs,
-                max_new_tokens=64,
+                max_new_tokens=256,
                 do_sample=False,
                 pad_token_id=self.tokenizer.eos_token_id,
             )
