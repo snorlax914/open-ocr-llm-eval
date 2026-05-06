@@ -2,27 +2,27 @@
   "total": 52,
   "parse_fail": 0,
   "errors": 0,
-  "avg_latency_ms": 901.5192307692307,
+  "avg_latency_ms": 624.1923076923077,
   "core_total": 39,
-  "core_correct": 39,
-  "core_accuracy": 1.0,
+  "core_correct": 32,
+  "core_accuracy": 0.8205128205128205,
   "per_class": {
     "상업송장": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
+      "precision": 0.7,
+      "recall": 0.9333333333333333,
+      "f1": 0.8,
       "support": 15
     },
     "포장명세서": {
-      "precision": 1.0,
+      "precision": 0.9166666666666666,
       "recall": 1.0,
-      "f1": 1.0,
+      "f1": 0.9565217391304348,
       "support": 11
     },
     "선하증권": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
       "support": 6
     },
     "원산지증명서": {
@@ -34,13 +34,14 @@
   },
   "confusion": {
     "상업송장": {
-      "상업송장": 15
+      "상업송장": 14,
+      "포장명세서": 1
     },
     "포장명세서": {
       "포장명세서": 11
     },
     "선하증권": {
-      "선하증권": 6
+      "상업송장": 6
     },
     "원산지증명서": {
       "원산지증명서": 7
@@ -48,11 +49,11 @@
   },
   "other_total": 13,
   "other_distribution": {
-    "원산지증명서": 9,
-    "<new_category>": 2,
-    "상업송장": 2
+    "<new_category>": 3,
+    "원산지증명서": 6,
+    "<unclassifiable>": 4
   },
   "new_categories": {
-    "품질증명서": 2
+    "품질증명서": 3
   }
 }

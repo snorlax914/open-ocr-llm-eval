@@ -2,7 +2,7 @@
   "total": 52,
   "parse_fail": 0,
   "errors": 0,
-  "avg_latency_ms": 901.5192307692307,
+  "avg_latency_ms": 554.3461538461538,
   "core_total": 39,
   "core_correct": 39,
   "core_accuracy": 1.0,
@@ -48,11 +48,8 @@
   },
   "other_total": 13,
   "other_distribution": {
-    "원산지증명서": 9,
-    "<new_category>": 2,
-    "상업송장": 2
+    "선하증권": 4,
+    "<unclassifiable>": 9
   },
-  "new_categories": {
-    "품질증명서": 2
-  }
+  "new_categories": {}
 }
