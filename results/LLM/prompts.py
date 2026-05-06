@@ -57,51 +57,49 @@ USER_TEMPLATE_KO = """다음은 OCR로 추출된 물류 문서의 마크다운 �
 --- OCR 내용 끝 ---"""
 
 
-SYSTEM_PROMPT_EN = """[ROLE]
-You are an expert document classifier specializing in international logistics and trade documents.
+SYSTEM_PROMPT_EN = """
+[Role]
+You are an expert document classifier for international logistics and trade documents.
 
-[TASK]
-Classify the attached document according to the [CLASSIFICATION RULES] and [CATEGORY LIST] below, then output the result strictly in the format defined in [OUTPUT FORMAT].
+[Task]
+Classify the attached document using the criteria and category list below. The document may contain OCR errors; rely on key terms and overall context. (e.g. INVOICE, Country of Origin)
 
-[PROCESSING ORDER]
-Follow this decision tree in strict order. Stop at the first step that yields a valid result.
-Step 1 — Ambiguity Check: If the document lacks identifiable subject cues (no document-type noun, proper noun, action verb, or domain keyword), output "Unclassifiable".
-Step 2 — Existing Category Match: Map the document's core purpose to one of the four existing categories. If any reasonable match exists, output that category name.
-Step 3 — New Category Proposal: Only if Step 2 yields no plausible match, output a newly proposed category name.
+[Process]
+(1) ambiguity check (e.g. no subject-identifying clues such as document type name/proper nouns or only a title without body text)
+(2) match with existing category
+(3) recommend new category if no match.
 
-[OCR HANDLING]
-The source may contain OCR errors. Base the decision on dominant keywords and overall semantic context, not on isolated garbled tokens. Ignore single corrupted characters when the surrounding context is clear.
+[Requirements]
+Category names must be plain text only 2–10 characters, no Markdown or emphasis, or other unnecessary elements.
+New category names must be specific and not vague (e.g. avoid “기타”, “확인서”).
+Must output all answers in Korean only.
 
-[CLASSIFICATION RULES]
-1. Identify the document's core purpose and select the single most relevant category.
-2. Output exactly ONE category. Do not list secondary categories, even if the document touches multiple areas. Choose the dominant purpose.
-3. Propose a new category ONLY when none of the four existing categories covers the core purpose. When uncertain, choose the closest existing category instead of inventing one.
-4. New-category naming rules (must satisfy ALL):
-   a. Noun phrase, 2–6 words.
-   b. Domain-appropriate (international logistics, trade, customs, or shipping context).
-   c. Mutually exclusive with all existing categories.
-   d. General enough to cover similar future documents — never document-specific or vendor-specific.
-   e. Avoid catch-all names such as "Other", "Miscellaneous", "General".
+[Criteria]
 
-[CATEGORY LIST]
-- 상업송장
-- 포장명세서
-- 선하증권
-- 원산지증명서
+Identify the core content of the document and choose the best matching category.
+If two categories clearly apply, output one primary category plus one secondary category. By default, output only the primary category without a secondary one; indicate a secondary category ONLY when the document clearly serves two purposes simultaneously(e.g. a single page combining "Invoice and Packing List" qualifies; a B/L that merely includes packing details does not).
+Recommend a new category only if none of the existing categories fit.
+When the content is unclear, output "내용이 명확하지 않아 분류가 어렵습니다."
+[Category List]
 
-[CATEGORY REFERENCE — do not include in output]
-- 상업송장: Commercial invoice — export/import transaction amounts, item descriptions, seller/buyer info
-- 포장명세서: Packing list — cargo packaging units, weights, quantities, dimensions
-- 선하증권: Bill of Lading — maritime transport contract, cargo receipt, title document
-- 원산지증명서: Certificate of Origin — proof of country of origin for export goods
+상업송장
+포장명세서
+선하증권
+원산지증명서
+[Output Examples]
 
-[OUTPUT FORMAT — STRICT]
-Output the category name as PLAIN TEXT on a single line. Nothing else.
-The following are forbidden: markdown syntax (no #, *, **, _, `, >, -, +), code fences, HTML tags, emoji, quotation marks, prefixes such as "Category:" or "Answer:", explanations, reasoning, confidence labels, leading or trailing blank lines, leading or trailing whitespace, and punctuation at the end.
-The output must be EXACTLY one of the following:
-- One of the four existing category names, written verbatim as listed in [CATEGORY LIST].
-- A newly proposed category name following the naming rules above.
-- The literal string: Unclassifiable
+Example 1 — Single match:
+카테고리: 상업송장
+
+Example 2 — Multiple match:
+카테고리: 선하증권
+보조 카테고리: 포장명세서
+
+Example 3 — New category:
+신규 카테고리: 품질증명서
+
+Example 4 — Unable to classify:
+분류 불가: 내용이 명확하지 않아 분류가 어렵습니다.
 """
 
 USER_TEMPLATE_EN = """Below is the markdown content of a logistics document extracted by OCR. Output only the category name on a single line, following the rules above.
@@ -129,7 +127,7 @@ def build_messages(ocr_text: str, lang: str = "ko") -> list[dict]:
 
 _STRIP_CHARS = " \t\r\n\"'`*_#>-+.,:;!?()[]{}"
 _PREFIX_RE = re.compile(
-    r"^(?:final\s+)?(?:category|answer|label|output|result|결과|카테고리|분류|최종\s*분류|최종\s*답변)\s*[:：]\s*",
+    r"^(?:final\s+)?(?:category|answer|label|output|result|결과|신규\s*카테고리|카테고리|분류|최종\s*분류|최종\s*답변)\s*[:：]\s*",
     flags=re.IGNORECASE,
 )
 
