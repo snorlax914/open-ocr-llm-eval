@@ -34,8 +34,8 @@ MODEL_CONFIG = {
     },
     "qwen3-4b": {
         "backend": "ollama",
-        "model_id": "qwen3:4b",
-        "output_dir": "qwen3-4b",
+        "model_id": "qwen3:4b-instruct",
+        "output_dir": "qwen3-4b-instruct",
     },
     "exaone": {
         "backend": "ollama",
@@ -95,13 +95,15 @@ class OllamaRunner:
             self.client.pull(model_id)
 
     def __call__(self, messages: list[dict]) -> str:
-        # qwen3 family ignores `think=False` for some sizes (e.g. 4b emits
-        # plain-text reasoning instead of <think>...</think>). Append the
-        # `/no_think` directive supported by Qwen3's chat template as a belt
-        # & suspenders, and give the model enough budget to actually finish
-        # if reasoning still leaks through.
+        # Hybrid Qwen3 sizes ignore `think=False` and still emit reasoning,
+        # so add `/no_think` as a belt & suspenders. Skip for the dedicated
+        # `-instruct` / `-thinking` variants where the directive is not
+        # part of the chat template and would leak into the user message.
         msgs = list(messages)
-        if "qwen3" in self.model_id and msgs and msgs[-1].get("role") == "user":
+        is_hybrid_qwen3 = "qwen3" in self.model_id and not any(
+            v in self.model_id for v in ("instruct", "thinking")
+        )
+        if is_hybrid_qwen3 and msgs and msgs[-1].get("role") == "user":
             last = dict(msgs[-1])
             last["content"] = last.get("content", "") + "\n\n/no_think"
             msgs[-1] = last
